@@ -1,9 +1,5 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: 0;
-}
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap");
 
-button {
-  cursor: pointer;
+body {
+  font-family: "Merriweather", serif;
 }

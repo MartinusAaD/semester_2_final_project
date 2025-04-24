@@ -3,12 +3,12 @@ import {
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
-import App from "../App";
 
 // Importing pages
+import App from "../App";
 import Home from "../pages/Home";
-import Info from "../pages/Info";
-import Product from "../pages/Product";
+import ProductInfo from "../pages/ProductInfo";
+import ProductStore from "../pages/ProductStore";
 import Contact from "../pages/Contact";
 import Basket from "../pages/Basket";
 import Profile from "../pages/Profile";
@@ -19,8 +19,8 @@ export const router = createBrowserRouter(
     <>
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
-        <Route path="/info" element={<Info />} />
-        <Route path="/product" element={<Product />} />
+        <Route path="/product-info" element={<ProductInfo />} />
+        <Route path="/product-store" element={<ProductStore />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/basket" element={<Basket />} />
         <Route path="/profile" element={<Profile />} />
