@@ -1,0 +1,83 @@
+.productsRootContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-large);
+  padding: var(--spacing-xl) 0;
+}
+
+.productContainer {
+  width: 90%;
+  display: flex;
+  align-items: stretch;
+}
+
+.productContainer:hover .productImage {
+  transform: scale(1);
+}
+
+.productContainer:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.imageContainer {
+  width: 50%;
+  overflow: hidden;
+  border-radius: var(--border-radius-large);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.productImage {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius-large);
+  object-fit: cover;
+  transform: scale(1.05);
+  transition: transform 1s ease;
+}
+
+.productInfoContainer {
+  width: 50%;
+  padding: var(--spacing-medium);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.productInfo {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.moreInfo {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: right;
+  align-items: flex-end;
+  text-decoration: none;
+}
+
+.moreInfoButton {
+  width: 120px;
+  height: 42px;
+  color: var(--font-color-light);
+  text-decoration: none;
+  font-weight: bold;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border-radius-small);
+}
+
+.moreInfoButton:hover {
+  background-color: var(--primary-color-darker);
+}

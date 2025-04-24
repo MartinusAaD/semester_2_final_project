@@ -1,12 +1,12 @@
 export const productItems = [
-  / Berry Bushes / /
-    // Blueberry Bush
-    {
-      name: "Blueberry Bush",
-      type: "Berry Bush",
-      product: "bush",
-      imageUrl: "/images/bush-blueberry.png",
-    },
+  // Berry Bushes //
+  // Blueberry Bush
+  {
+    name: "Blueberry Bush",
+    type: "Berry Bush",
+    product: "bush",
+    imageUrl: "/images/bush-blueberry.png",
+  },
   {
     name: "Blueberry Bush",
     type: "Berry Bush",
@@ -64,8 +64,8 @@ export const productItems = [
   {
     name: "Apple Tree",
     type: "Fruit Tree",
-    product: "tree",
-    imageUrl: "/images/fruitTree-apple.png",
+    product: "fruitTree",
+    imageUrl: "/images/fruitTree-apple.jpg",
   },
   {
     name: "Apple Tree",
@@ -84,7 +84,7 @@ export const productItems = [
   {
     name: "Banana Tree",
     type: "Fruit Tree",
-    product: "tree",
+    product: "fruitTree",
     imageUrl: "/images/fruitTree-banana.png",
   },
   {
@@ -104,7 +104,7 @@ export const productItems = [
   {
     name: "Orange Tree",
     type: "Fruit Tree",
-    product: "tree",
+    product: "fruitTree",
     imageUrl: "/images/fruitTree-orange.png",
   },
   {
@@ -124,7 +124,7 @@ export const productItems = [
   {
     name: "Pear Tree",
     type: "Fruit Tree",
-    product: "tree",
+    product: "fruitTree",
     imageUrl: "/images/fruitTree-pear.png",
   },
   {
@@ -144,7 +144,7 @@ export const productItems = [
   {
     name: "Plum Tree",
     type: "Fruit Tree",
-    product: "tree",
+    product: "fruitTree",
     imageUrl: "/images/fruitTree-plum.png",
   },
   {
@@ -188,32 +188,6 @@ export const productItems = [
     type: "tree",
     product: "plank",
     imageUrl: "/images/tree-planks-cherryBlossom.png",
-  },
-
-  // Magic Tree
-  {
-    name: "Magic Tree",
-    type: "tree",
-    product: "tree",
-    imageUrl: "/images/tree-magicTree.png",
-  },
-  {
-    name: "Magic Tree",
-    type: "tree",
-    product: "branch",
-    imageUrl: "/images/tree-branch-magicTree.png",
-  },
-  {
-    name: "Magic Tree",
-    type: "tree",
-    product: "seed",
-    imageUrl: "/images/tree-seed-magicTree.png",
-  },
-  {
-    name: "Magic Tree",
-    type: "tree",
-    product: "plank",
-    imageUrl: "/images/tree-planks-magicTree.png",
   },
 
   // Mahogany Tree
@@ -344,5 +318,31 @@ export const productItems = [
     type: "tree",
     product: "plank",
     imageUrl: "/images/tree-planks-willow.png",
+  },
+
+  // Magic Tree
+  {
+    name: "Magic Tree",
+    type: "tree",
+    product: "tree",
+    imageUrl: "/images/tree-magicTree.png",
+  },
+  {
+    name: "Magic Tree",
+    type: "tree",
+    product: "branch",
+    imageUrl: "/images/tree-branch-magicTree.png",
+  },
+  {
+    name: "Magic Tree",
+    type: "tree",
+    product: "seed",
+    imageUrl: "/images/tree-seed-magicTree.png",
+  },
+  {
+    name: "Magic Tree",
+    type: "tree",
+    product: "plank",
+    imageUrl: "/images/tree-planks-magicTree.png",
   },
 ];

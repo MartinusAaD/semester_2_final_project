@@ -1,7 +1,8 @@
 :root {
   /* Colors */
   --primary-color: #95b177;
-  --primary-color-lighter: #95836e;
+  --primary-color-lighter: #b7d498;
+  --primary-color-darker: #7e9862;
   --secondary-color-darker: #79695a;
   --secondary-color: #9e8a78;
   --background-color-light: #fafafa;
@@ -28,9 +29,10 @@
   --font-size-xl: 2rem;
 
   /* Borders */
-  --border-radius-small: 2px;
-  --border-radius-medium: 4px;
-  --border-radius-large: 6px;
+  --border-radius-xs: 6px;
+  --border-radius-small: 12px;
+  --border-radius-medium: 24px;
+  --border-radius-large: 32px;
 
   /* Shadow */
   --box-shadow-small: 1px 1px 1px 1px rgba(0, 0, 0, 0.6);
