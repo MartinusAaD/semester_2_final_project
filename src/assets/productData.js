@@ -1,17 +1,17 @@
-const productItems = [
+export const productItems = [
   / Berry Bushes / /
     // Blueberry Bush
     {
       name: "Blueberry Bush",
       type: "Berry Bush",
       product: "bush",
-      imageUrl: "./images/bush-blueberry.png",
+      imageUrl: "/images/bush-blueberry.png",
     },
   {
     name: "Blueberry Bush",
     type: "Berry Bush",
     product: "seed",
-    imageUrl: "./images/bush-seed-blueberry.png",
+    imageUrl: "/images/bush-seed-blueberry.png",
   },
 
   // Cloudberry Bush
@@ -19,13 +19,13 @@ const productItems = [
     name: "Cloudberry Bush",
     type: "Berry Bush",
     product: "bush",
-    imageUrl: "./images/bush-cloudberry.png",
+    imageUrl: "/images/bush-cloudberry.png",
   },
   {
     name: "Cloudberry Bush",
     type: "Berry Bush",
     product: "seed",
-    imageUrl: "./images/bush-seed-cloudberry.png",
+    imageUrl: "/images/bush-seed-cloudberry.png",
   },
 
   // Raspberry Bush
@@ -33,13 +33,13 @@ const productItems = [
     name: "Raspberry Bush",
     type: "Berry Bush",
     product: "bush",
-    imageUrl: "./images/bush-raspberry.png",
+    imageUrl: "/images/bush-raspberry.png",
   },
   {
     name: "Raspberry Bush",
     type: "Berry Bush",
     product: "seed",
-    imageUrl: "./images/bush-seed-raspberry.png",
+    imageUrl: "/images/bush-seed-raspberry.png",
   },
 
   // Strawberry Bush
@@ -47,13 +47,13 @@ const productItems = [
     name: "Strawberry Bush",
     type: "Berry Bush",
     product: "bush",
-    imageUrl: "./images/bush-strawberry.png",
+    imageUrl: "/images/bush-strawberry.png",
   },
   {
     name: "Strawberry Bush",
     type: "Berry Bush",
     product: "seed",
-    imageUrl: "./images/bush-seed-strawberry.png",
+    imageUrl: "/images/bush-seed-strawberry.png",
   },
 
   // ---------------------------------------------------------------------------------------
@@ -65,19 +65,19 @@ const productItems = [
     name: "Apple Tree",
     type: "Fruit Tree",
     product: "tree",
-    imageUrl: "./images/fruitTree-apple.png",
+    imageUrl: "/images/fruitTree-apple.png",
   },
   {
     name: "Apple Tree",
     type: "Fruit Tree",
     product: "basket",
-    imageUrl: "./images/fruitTree-basket-apple.png",
+    imageUrl: "/images/fruitTree-basket-apple.png",
   },
   {
     name: "Apple Tree",
     type: "Fruit Tree",
     product: "seed",
-    imageUrl: "./images/fruitTree-seed-apple.png",
+    imageUrl: "/images/fruitTree-seed-apple.png",
   },
 
   // Banana Tree
@@ -85,19 +85,19 @@ const productItems = [
     name: "Banana Tree",
     type: "Fruit Tree",
     product: "tree",
-    imageUrl: "./images/fruitTree-banana.png",
+    imageUrl: "/images/fruitTree-banana.png",
   },
   {
     name: "Banana Tree",
     type: "Fruit Tree",
     product: "basket",
-    imageUrl: "./images/fruitTree-basket-banana.png",
+    imageUrl: "/images/fruitTree-basket-banana.png",
   },
   {
     name: "Banana Tree",
     type: "Fruit Tree",
     product: "seed",
-    imageUrl: "./images/fruitTree-seed-banana.png",
+    imageUrl: "/images/fruitTree-seed-banana.png",
   },
 
   // Orange Tree
@@ -105,19 +105,19 @@ const productItems = [
     name: "Orange Tree",
     type: "Fruit Tree",
     product: "tree",
-    imageUrl: "./images/fruitTree-orange.png",
+    imageUrl: "/images/fruitTree-orange.png",
   },
   {
     name: "Orange Tree",
     type: "Fruit Tree",
     product: "basket",
-    imageUrl: "./images/fruitTree-basket-orange.png",
+    imageUrl: "/images/fruitTree-basket-orange.png",
   },
   {
     name: "Orange Tree",
     type: "Fruit Tree",
     product: "seed",
-    imageUrl: "./images/fruitTree-seed-orange.png",
+    imageUrl: "/images/fruitTree-seed-orange.png",
   },
 
   // Pear Tree
@@ -125,19 +125,19 @@ const productItems = [
     name: "Pear Tree",
     type: "Fruit Tree",
     product: "tree",
-    imageUrl: "./images/fruitTree-pear.png",
+    imageUrl: "/images/fruitTree-pear.png",
   },
   {
     name: "Pear Tree",
     type: "Fruit Tree",
     product: "basket",
-    imageUrl: "./images/fruitTree-basket-pear.png",
+    imageUrl: "/images/fruitTree-basket-pear.png",
   },
   {
     name: "Pear Tree",
     type: "Fruit Tree",
     product: "seed",
-    imageUrl: "./images/fruitTree-seed-pear.png",
+    imageUrl: "/images/fruitTree-seed-pear.png",
   },
 
   // Plum Tree
@@ -145,19 +145,19 @@ const productItems = [
     name: "Plum Tree",
     type: "Fruit Tree",
     product: "tree",
-    imageUrl: "./images/fruitTree-plum.png",
+    imageUrl: "/images/fruitTree-plum.png",
   },
   {
     name: "Plum Tree",
     type: "Fruit Tree",
     product: "basket",
-    imageUrl: "./images/fruitTree-basket-plum.png",
+    imageUrl: "/images/fruitTree-basket-plum.png",
   },
   {
     name: "Plum Tree",
     type: "Fruit Tree",
     product: "seed",
-    imageUrl: "./images/fruitTree-seed-plum.png",
+    imageUrl: "/images/fruitTree-seed-plum.png",
   },
 
   // ---------------------------------------------------------------------------------------
@@ -169,25 +169,25 @@ const productItems = [
     name: "Cherry Blossom Tree",
     type: "tree",
     product: "tree",
-    imageUrl: "./images/tree-cherryBlossom.png",
+    imageUrl: "/images/tree-cherryBlossom.png",
   },
   {
     name: "Cherry Blossom Tree",
     type: "tree",
     product: "branch",
-    imageUrl: "./images/tree-branch-cherryBlossom.png",
+    imageUrl: "/images/tree-branch-cherryBlossom.png",
   },
   {
     name: "Cherry Blossom Tree",
     type: "tree",
     product: "seed",
-    imageUrl: "./images/tree-seed-cherryBlossom.png",
+    imageUrl: "/images/tree-seed-cherryBlossom.png",
   },
   {
     name: "Cherry Blossom Tree",
     type: "tree",
     product: "plank",
-    imageUrl: "./images/tree-planks-cherryBlossom.png",
+    imageUrl: "/images/tree-planks-cherryBlossom.png",
   },
 
   // Magic Tree
@@ -195,25 +195,25 @@ const productItems = [
     name: "Magic Tree",
     type: "tree",
     product: "tree",
-    imageUrl: "./images/tree-magicTree.png",
+    imageUrl: "/images/tree-magicTree.png",
   },
   {
     name: "Magic Tree",
     type: "tree",
     product: "branch",
-    imageUrl: "./images/tree-branch-magicTree.png",
+    imageUrl: "/images/tree-branch-magicTree.png",
   },
   {
     name: "Magic Tree",
     type: "tree",
     product: "seed",
-    imageUrl: "./images/tree-seed-magicTree.png",
+    imageUrl: "/images/tree-seed-magicTree.png",
   },
   {
     name: "Magic Tree",
     type: "tree",
     product: "plank",
-    imageUrl: "./images/tree-planks-magicTree.png",
+    imageUrl: "/images/tree-planks-magicTree.png",
   },
 
   // Mahogany Tree
@@ -221,25 +221,25 @@ const productItems = [
     name: "Mahogany Tree",
     type: "tree",
     product: "tree",
-    imageUrl: "./images/tree-mahogany.png",
+    imageUrl: "/images/tree-mahogany.png",
   },
   {
     name: "Mahogany Tree",
     type: "tree",
     product: "branch",
-    imageUrl: "./images/tree-branch-mahogany.png",
+    imageUrl: "/images/tree-branch-mahogany.png",
   },
   {
     name: "Mahogany Tree",
     type: "tree",
     product: "seed",
-    imageUrl: "./images/tree-seed-mahogany.png",
+    imageUrl: "/images/tree-seed-mahogany.png",
   },
   {
     name: "Mahogany Tree",
     type: "tree",
     product: "plank",
-    imageUrl: "./images/tree-planks-mahogany.png",
+    imageUrl: "/images/tree-planks-mahogany.png",
   },
 
   // Maple Tree
@@ -247,25 +247,25 @@ const productItems = [
     name: "Maple Tree",
     type: "tree",
     product: "tree",
-    imageUrl: "./images/tree-maple.png",
+    imageUrl: "/images/tree-maple.png",
   },
   {
     name: "Maple Tree",
     type: "tree",
     product: "branch",
-    imageUrl: "./images/tree-branch-maple.png",
+    imageUrl: "/images/tree-branch-maple.png",
   },
   {
     name: "Maple Tree",
     type: "tree",
     product: "seed",
-    imageUrl: "./images/tree-seed-maple.png",
+    imageUrl: "/images/tree-seed-maple.png",
   },
   {
     name: "Maple Tree",
     type: "tree",
     product: "plank",
-    imageUrl: "./images/tree-planks-maple.png",
+    imageUrl: "/images/tree-planks-maple.png",
   },
 
   // Oak Tree
@@ -273,25 +273,25 @@ const productItems = [
     name: "Oak Tree",
     type: "tree",
     product: "tree",
-    imageUrl: "./images/tree-oak.png",
+    imageUrl: "/images/tree-oak.png",
   },
   {
     name: "Oak Tree",
     type: "tree",
     product: "branch",
-    imageUrl: "./images/tree-branch-oak.png",
+    imageUrl: "/images/tree-branch-oak.png",
   },
   {
     name: "Oak Tree",
     type: "tree",
     product: "seed",
-    imageUrl: "./images/tree-seed-oak.png",
+    imageUrl: "/images/tree-seed-oak.png",
   },
   {
     name: "Oak Tree",
     type: "tree",
     product: "plank",
-    imageUrl: "./images/tree-planks-oak.png",
+    imageUrl: "/images/tree-planks-oak.png",
   },
 
   // Pine Tree
@@ -299,25 +299,25 @@ const productItems = [
     name: "Pine Tree",
     type: "tree",
     product: "tree",
-    imageUrl: "./images/tree-pine.png",
+    imageUrl: "/images/tree-pine.png",
   },
   {
     name: "Pine Tree",
     type: "tree",
     product: "branch",
-    imageUrl: "./images/tree-branch-pine.png",
+    imageUrl: "/images/tree-branch-pine.png",
   },
   {
     name: "Pine Tree",
     type: "tree",
     product: "seed",
-    imageUrl: "./images/tree-seed-pine.png",
+    imageUrl: "/images/tree-seed-pine.png",
   },
   {
     name: "Pine Tree",
     type: "tree",
     product: "plank",
-    imageUrl: "./images/tree-planks-pine.png",
+    imageUrl: "/images/tree-planks-pine.png",
   },
 
   // Willow Tree
@@ -325,24 +325,24 @@ const productItems = [
     name: "Willow Tree",
     type: "tree",
     product: "tree",
-    imageUrl: "./images/tree-willow.png",
+    imageUrl: "/images/tree-willow.png",
   },
   {
     name: "Willow Tree",
     type: "tree",
     product: "branch",
-    imageUrl: "./images/tree-branch-willow.png",
+    imageUrl: "/images/tree-branch-willow.png",
   },
   {
     name: "Willow Tree",
     type: "tree",
     product: "seed",
-    imageUrl: "./images/tree-seed-willow.png",
+    imageUrl: "/images/tree-seed-willow.png",
   },
   {
     name: "Willow Tree",
     type: "tree",
     product: "plank",
-    imageUrl: "./images/tree-planks-willow.png",
+    imageUrl: "/images/tree-planks-willow.png",
   },
 ];

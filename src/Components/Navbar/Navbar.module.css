@@ -82,7 +82,7 @@
   height: 42px;
   box-shadow: var(--box-shadow-small);
   border-radius: var(--spacing-small);
-  background-color: var(--primary-color-darker);
+  background-color: var(--secondary-color-darker);
 }
 
 .navbar__linksButton:hover {

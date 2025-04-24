@@ -14,7 +14,7 @@ const Navbar = () => {
         <div className={styles.navbar__brandLogoContainer}>
           <NavLink to="/" className={styles.navbar__brandLogoLink}>
             <img
-              src="./icons/treeIcon-white.png"
+              src="/icons/treeIcon-white.png"
               alt="image"
               className={styles.navbar__icon}
             />

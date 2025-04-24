@@ -1,0 +1,31 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: var(--spacing-small);
+  background-color: var(--secondary-color);
+}
+
+.navbarContainer {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar a {
+  flex-basis: 30%;
+  text-align: center;
+  font-weight: bold;
+  color: var(--font-color-light);
+  text-decoration: none;
+  text-underline-offset: 4px;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+.active {
+  text-decoration: underline !important;
+}
