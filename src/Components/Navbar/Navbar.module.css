@@ -16,7 +16,6 @@
 }
 
 .navbar a {
-  width: 64px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,8 +23,16 @@
   text-decoration: none;
 }
 
-.navbar__iconContainer {
-  flex-basis: 15%;
+.navbar__brandLogoContainer {
+  flex-basis: 25%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.navbar__brandLogoLink {
+  display: flex;
+  gap: var(--spacing-small);
 }
 
 .navbar__icon {
@@ -33,31 +40,44 @@
   height: auto;
 }
 
-.navbar__links {
+.navbar__brandNameWord {
+  font-size: var(--font-size-xs);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.navbar__linksContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: var(--spacing-medium);
+  gap: var(--spacing-large);
 }
 
-.navbar__linksFirst {
-  flex-basis: 70%;
+.navbar__linksTextContainer {
+  flex-basis: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.navbar__linksFirst a {
+.navbar__linksTextContainer a {
+  width: 64px;
   text-underline-offset: 4px;
   font-weight: bold;
 }
 
-.navbar__linksFirst a:hover {
+.navbar__linksTextContainer a:hover {
   text-decoration: underline;
 }
 
-.navbar__linksLast {
-  flex-basis: 15%;
+.navbar__linksButtonsContainer {
+  flex-basis: 25%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
 }
 
-.navbar__linksLast a {
+.navbar__linksButton {
   width: 42px;
   height: 42px;
   box-shadow: var(--box-shadow-small);
@@ -65,7 +85,7 @@
   background-color: var(--primary-color-darker);
 }
 
-.navbar__linksLast a:hover {
+.navbar__linksButton:hover {
   opacity: 0.9;
 }
 
