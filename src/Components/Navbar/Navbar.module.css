@@ -86,7 +86,7 @@
 }
 
 .navbar__linksButton:hover {
-  opacity: 0.9;
+  background-color: var(--secondary-color-darkest);
 }
 
 .active {

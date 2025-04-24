@@ -1,0 +1,21 @@
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color);
+  padding: var(--spacing-medium) 0;
+}
+
+.footerContainer {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--font-color-light);
+}
+
+.footer p {
+  padding: var(--spacing-medium);
+}
