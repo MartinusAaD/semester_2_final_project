@@ -65,7 +65,7 @@ export const productItems = [
     name: "Apple Tree",
     type: "Fruit Tree",
     product: "fruitTree",
-    imageUrl: "/images/fruitTree-apple.jpg",
+    imageUrl: "/images/fruitTree-apple.png",
   },
   {
     name: "Apple Tree",
