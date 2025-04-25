@@ -1,31 +1,19 @@
 import styles from "./NavbarProductInfo.module.css";
 import { NavLink } from "react-router-dom";
 
-const NavbarProductInfo = ({ setItemProperty }) => {
+const NavbarProductInfo = () => {
   const setActiveClass = ({ isActive }) => (isActive ? styles.active : "");
 
   return (
     <nav className={styles.navbar}>
       <div className={styles.navbarContainer}>
-        <NavLink
-          to="trees"
-          className={setActiveClass}
-          onClick={() => setItemProperty("tree")}
-        >
+        <NavLink to="trees" className={setActiveClass}>
           Trees
         </NavLink>
-        <NavLink
-          to="fruit-trees"
-          className={setActiveClass}
-          onClick={() => setItemProperty("fruitTree")}
-        >
+        <NavLink to="fruit-trees" className={setActiveClass}>
           Fruit Trees
         </NavLink>
-        <NavLink
-          to="berry-bushes"
-          className={setActiveClass}
-          onClick={() => setItemProperty("bush")}
-        >
+        <NavLink to="berry-bushes" className={setActiveClass}>
           Berry Bushes
         </NavLink>
       </div>

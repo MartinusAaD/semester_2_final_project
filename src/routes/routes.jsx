@@ -16,6 +16,7 @@ import Profile from "../pages/Profile";
 import PageNotFound from "../pages/PageNotFound";
 
 import Products from "../pages/ProductInfo/Products";
+import ProductsShowcase from "../pages/ProductInfo/ProductsShowcase";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,11 +24,11 @@ export const router = createBrowserRouter(
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
         <Route path="/product-info" element={<ProductInfo />}>
-          {/* Navigate suggested by ChatGPT */}
+          {/* Navigate to suggested by ChatGPT */}
           <Route index element={<Navigate to="trees" replace />} />
-          <Route path="trees" element={<Products />} />
-          <Route path="fruit-trees" element={<Products />} />
-          <Route path="berry-bushes" element={<Products />} />
+          <Route path=":category" element={<Products />}>
+            <Route path=":productId" element={<ProductsShowcase />} />
+          </Route>
         </Route>
         <Route path="/product-store" element={<ProductStore />} />
         <Route path="/contact" element={<Contact />} />

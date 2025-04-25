@@ -10,7 +10,7 @@
 .productContainer {
   width: 90%;
   display: flex;
-  align-items: stretch;
+  /* align-items: stretch; */
 }
 
 .productContainer:hover .productImage {
@@ -45,6 +45,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: var(--spacing-medium);
 }
 
 .productInfo {
@@ -52,17 +53,19 @@
   height: 80%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+  gap: var(--spacing-medium);
 }
 
 .moreInfo {
   width: 100%;
   height: 20%;
   display: flex;
-  justify-content: right;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
+  padding: var(--spacing-medium) 0;
 }
 
 .moreInfoButton {
@@ -80,4 +83,21 @@
 
 .moreInfoButton:hover {
   background-color: var(--primary-color-darker);
+}
+
+@media screen and (max-width: 768px) {
+  .productContainer {
+    flex-direction: column;
+  }
+  .productContainer:nth-child(even) {
+    flex-direction: column;
+  }
+
+  .imageContainer {
+    width: 100%;
+  }
+
+  .productInfoContainer {
+    width: 100%;
+  }
 }
