@@ -10,8 +10,6 @@ import styles from "./Products.module.css";
 import { useState } from "react";
 
 const Products = () => {
-  const [productInFocus, setProductInFocus] = useState("");
-
   // Passing of "props" through Outlet suggested by ChatGPT
   const { itemList } = useOutletContext();
 
@@ -44,7 +42,7 @@ const Products = () => {
 
   return (
     <>
-      <Outlet context={{ itemList, productInFocus }} />
+      <Outlet context={{ itemList }} />
       {!isShowcaseActive && (
         <div className={styles.productsRootContainer}>
           {itemList
@@ -72,7 +70,6 @@ const Products = () => {
                         to={item.routePath}
                         className={styles.moreInfoButton}
                         onClick={() => {
-                          setProductInFocus(item.name);
                           scrollToTop();
                         }}
                       >

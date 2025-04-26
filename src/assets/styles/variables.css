@@ -36,5 +36,6 @@
   --border-radius-large: 32px;
 
   /* Shadow */
-  --box-shadow-small: 1px 1px 1px 1px rgba(0, 0, 0, 0.6);
+  --box-shadow-small: 1px 1px 1px 1px rgba(0, 0, 0, 0.7);
+
 }

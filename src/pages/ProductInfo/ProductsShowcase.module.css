@@ -9,6 +9,11 @@
 
 .productsShowcaseContainer {
   width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
 
 .productImage {
@@ -32,4 +37,41 @@
 
 .productContainer img {
   width: 80%;
+}
+
+.subProductsContainer {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-medium);
+}
+
+.itemContainer {
+  display: flex;
+}
+
+.itemContainer div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-medium);
+}
+
+.itemContainer p {
+  padding: var(--spacing-large);
+}
+
+.itemContainer:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: var(--spacing-large) 0;
 }
