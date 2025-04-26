@@ -1,5 +1,5 @@
 .button {
-  width: 120px;
+  min-width: 120px;
   padding: var(--spacing-medium) var(--spacing-medium);
   border-radius: var(--border-radius-small);
   border: none;

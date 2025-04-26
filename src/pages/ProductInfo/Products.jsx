@@ -7,7 +7,7 @@ import {
   useParams,
 } from "react-router-dom";
 import styles from "./Products.module.css";
-import { useState } from "react";
+import Button from "../../Components/Button/Button";
 
 const Products = () => {
   // Passing of "props" through Outlet suggested by ChatGPT

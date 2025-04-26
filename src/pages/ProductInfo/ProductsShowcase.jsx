@@ -21,8 +21,6 @@ const ProductsShowcase = () => {
   const productBasket = item.find((item) => item.product === "basket") || "";
   const productPlanks = item.find((item) => item.product === "planks") || "";
 
-  useEffect(() => {}, [location]);
-
   return (
     <>
       <div className={styles.productsShowcaseRootContainer}>

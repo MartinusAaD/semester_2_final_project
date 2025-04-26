@@ -1,0 +1,46 @@
+.formContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-xl) 0;
+  }
+  
+  .form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-medium);
+    font-weight: bold;
+    background-color: var(--secondary-color);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--box-shadow-small);
+  }
+  
+  .formSectionCategory {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  
+  .formSectionCategory input,
+  select {
+    height: 32px;
+    padding: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: var(--border-radius-xs);
+  }
+  
+  textarea {
+    resize: none;
+    height: 100px;
+    padding: var(--spacing-small);
+    border-radius: var(--border-radius-xs);
+  }
+  
