@@ -239,7 +239,7 @@ export const productItems = [
   {
     name: "Cherry Blossom Tree",
     type: "tree",
-    product: "plank",
+    product: "planks",
     imageUrl: "/images/tree-planks-cherryBlossom.png",
     routePath: "cherry-blossom-tree",
     id: "ca3d9d75-c109-53f2-a3b5-5c096fafe544",
@@ -273,7 +273,7 @@ export const productItems = [
   {
     name: "Mahogany Tree",
     type: "tree",
-    product: "plank",
+    product: "planks",
     imageUrl: "/images/tree-planks-mahogany.png",
     routePath: "mahogany-tree",
     id: "0f4b5f38-6dee-51a3-a0ef-86175840ac17",
@@ -307,7 +307,7 @@ export const productItems = [
   {
     name: "Maple Tree",
     type: "tree",
-    product: "plank",
+    product: "planks",
     imageUrl: "/images/tree-planks-maple.png",
     routePath: "maple-tree",
     id: "28127504-b61d-55a9-8181-509f31794ddb",
@@ -341,7 +341,7 @@ export const productItems = [
   {
     name: "Oak Tree",
     type: "tree",
-    product: "plank",
+    product: "planks",
     imageUrl: "/images/tree-planks-oak.png",
     routePath: "oak-tree",
     id: "a748858b-203b-50e3-9aaa-3b7c69d184d1",
@@ -375,7 +375,7 @@ export const productItems = [
   {
     name: "Pine Tree",
     type: "tree",
-    product: "plank",
+    product: "planks",
     imageUrl: "/images/tree-planks-pine.png",
     routePath: "pine-tree",
     id: "ddf08677-3923-511b-a02d-65fc7aaa2453",
@@ -409,7 +409,7 @@ export const productItems = [
   {
     name: "Willow Tree",
     type: "tree",
-    product: "plank",
+    product: "planks",
     imageUrl: "/images/tree-planks-willow.png",
     routePath: "willow-tree",
     id: "c62d1af0-b8f6-534d-abcb-a81b1916cf90",
@@ -443,7 +443,15 @@ export const productItems = [
   {
     name: "Magic Tree",
     type: "tree",
-    product: "plank",
+    product: "basket",
+    imageUrl: "/images/tree-basket-magicTree.png",
+    routePath: "magic-tree",
+    id: "c64434d8-61f7-4c52-bc9a-18d6b0d676ee",
+  },
+  {
+    name: "Magic Tree",
+    type: "tree",
+    product: "planks",
     imageUrl: "/images/tree-planks-magicTree.png",
     routePath: "magic-tree",
     id: "c453970e-9599-50b4-a2c2-814dd48aa4a7",

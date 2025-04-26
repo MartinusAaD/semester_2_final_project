@@ -1,13 +1,17 @@
 import {
   Link,
   matchPath,
+  Outlet,
   useLocation,
   useOutletContext,
   useParams,
 } from "react-router-dom";
 import styles from "./Products.module.css";
+import { useState } from "react";
 
 const Products = () => {
+  const [productInFocus, setProductInFocus] = useState("");
+
   // Passing of "props" through Outlet suggested by ChatGPT
   const { itemList } = useOutletContext();
 
@@ -30,12 +34,17 @@ const Products = () => {
   };
 
   const itemProperty = categoryMap[category];
-  console.log("category:", category, "→ itemProperty:", itemProperty);
 
   // -----------------------------------------------------
 
+  const scrollToTop = () => {
+    // Smooth or not?
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <>
+      <Outlet context={{ itemList, productInFocus }} />
       {!isShowcaseActive && (
         <div className={styles.productsRootContainer}>
           {itemList
@@ -62,6 +71,10 @@ const Products = () => {
                       <Link
                         to={item.routePath}
                         className={styles.moreInfoButton}
+                        onClick={() => {
+                          setProductInFocus(item.name);
+                          scrollToTop();
+                        }}
                       >
                         More info!
                       </Link>

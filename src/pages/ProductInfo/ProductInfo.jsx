@@ -1,15 +1,12 @@
-import { Outlet, useParams } from "react-router-dom";
+import { Outlet, useOutletContext } from "react-router-dom";
 import NavbarProductInfo from "../../Components/NavbarProductInfo/NavbarProductInfo";
-import { useState } from "react";
-import { productItems } from "../../assets/productData";
 
 const ProductInfo = () => {
-  const [itemList, setItemList] = useState(productItems);
-
+  const { itemList } = useOutletContext();
   return (
     <>
       <NavbarProductInfo />
-      {/* Passing of "props" through Outlet suggested by ChatGPT */}
+      {/* Passing of "props" through Outlet with context suggested by ChatGPT */}
       <Outlet context={{ itemList }} />
     </>
   );

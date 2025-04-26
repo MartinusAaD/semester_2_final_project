@@ -1,0 +1,35 @@
+.productsShowcaseRootContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-xl) 0;
+}
+
+.productsShowcaseContainer {
+  width: 90%;
+}
+
+.productImage {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius-large);
+}
+
+.productContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-medium);
+}
+
+.productHeading {
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.productContainer img {
+  width: 80%;
+}
