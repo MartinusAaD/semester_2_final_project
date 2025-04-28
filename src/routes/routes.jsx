@@ -7,13 +7,13 @@ import {
 
 // Importing pages
 import App from "../App";
-import Home from "../pages/Home";
+import Home from "../pages/Home/Home";
 import ProductInfo from "../pages/ProductInfo/ProductInfo";
-import ProductStore from "../pages/ProductStore";
-import Contact from "../pages/Contact";
-import Basket from "../pages/Basket";
-import Profile from "../pages/Profile";
-import PageNotFound from "../pages/PageNotFound";
+import ProductStore from "../pages/ProductStore/ProductStore";
+import Contact from "../pages/Contact/Contact";
+import Basket from "../pages/Basket/Basket";
+import Profile from "../pages/Profile/Profile";
+import PageNotFound from "../pages//PageNotFound/PageNotFound";
 
 import Products from "../pages/ProductInfo/Products";
 import ProductsShowcase from "../pages/ProductInfo/ProductsShowcase";
