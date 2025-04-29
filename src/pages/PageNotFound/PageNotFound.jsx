@@ -1,3 +1,5 @@
+import styles from "./PageNotFound.module.css"
+
 const PageNotFound = () => {
   return (
     <div>

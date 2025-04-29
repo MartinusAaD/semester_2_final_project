@@ -63,7 +63,12 @@ const Contact = () => {
 
   return (
     <>
-      <Form sections={sections} />
+      <div className={styles.formRootContainer}>
+        <div className={styles.formContainer}>
+          <h1>Contact</h1>
+          <Form sections={sections} submitButtonText={"Send Message"} />
+        </div>
+      </div>
     </>
   );
 };

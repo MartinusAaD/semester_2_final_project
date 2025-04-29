@@ -19,3 +19,7 @@
   box-shadow: var(--box-shadow-small);
   padding: var(--spacing-xl);
 }
+
+.formContainer p {
+    align-self: flex-start;
+}

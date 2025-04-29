@@ -1,10 +1,16 @@
 import styles from "./Form.module.css";
 import Button from "../Button/Button.jsx";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { auth } from "../../firestoreConfig.js";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 // Form usage explained at bottom
 
-const Form = ({ sections }) => {
+const Form = ({ sections, submitButtonText, typeOfForm }) => {
   const [inputData, setInputData] = useState({});
   const [errorMessages, setErrorMessages] = useState({});
   const [isInEditMode, setIsInEditMode] = useState(false);
@@ -14,6 +20,8 @@ const Form = ({ sections }) => {
     resetForm();
   }, [sections]);
 
+  const navigate = useNavigate();
+
   const handleValidation = () => {
     const errors = {};
     let isValid = true;
@@ -21,17 +29,33 @@ const Form = ({ sections }) => {
     sections.map((item) => {
       const input = inputData[item.name];
 
-      if (!input.trim() && item.validate) {
+      if (!String(input).trim() && item.validate) {
         isValid = false;
         errors[item.name] = item.errorMessage;
-        // Email
-      } else if (item.inputType === "email") {
+      }
+      // Email
+      else if (item.inputType === "email") {
         if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(input)) {
           isValid = false;
           errors[item.name] = "Please enter a valid email address!";
         }
-        // Phone Number
-      } else if (item.inputType === "tel") {
+      }
+      // Checkbox
+      else if (item.inputType === "checkbox") {
+        if (inputData.terms === false) {
+          isValid = false;
+          errors[item.name] = item.errorMessage;
+        }
+      }
+      // Confirm Password
+      else if (item.name === "confirmPassword") {
+        if (inputData.password !== inputData.confirmPassword) {
+          isValid = false;
+          errors[item.name] = "The passwords do not match!";
+        }
+      }
+      // Phone Number
+      else if (item.inputType === "tel") {
         if (input.trim().length !== 8) {
           isValid = false;
           errors[item.name] = "Phone Number must be 8 digits!";
@@ -63,72 +87,134 @@ const Form = ({ sections }) => {
     return isValid;
   };
 
-  const onChange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setInputData((prev) => ({ ...prev, [name]: value }));
+    setErrorMessages((prev) => ({ ...prev, [name]: "" }));
+  };
+
+  const handleChangeCheckbox = (e) => {
+    const { name, checked } = e.target;
+    setInputData((prev) => ({ ...prev, [name]: checked }));
     setErrorMessages((prev) => ({ ...prev, [name]: "" }));
   };
 
   const resetForm = () => {
     const data = {};
     sections.map((item) => {
-      data[item.name] = "";
+      if (item.inputType === "checkbox") {
+        data[item.name] = false;
+      } else {
+        data[item.name] = "";
+      }
     });
     setInputData(data);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e, email, password) => {
     e.preventDefault();
-
     const isFormValid = handleValidation();
 
     if (!isFormValid) {
       return;
-    } else if (!isInEditMode) {
-    } else {
     }
 
+    // For Sign Up purposes
+    if (typeOfForm === "signUp") {
+      try {
+        const userCredential = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        const user = userCredential.user;
+        console.log("User has been created!", user);
+
+        navigate("/");
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    if (typeOfForm === "signIn") {
+      try {
+        const userCredential = await signInWithEmailAndPassword(
+          auth,
+          inputData.email,
+          inputData.password
+        );
+        const user = userCredential.user;
+        console.log("User has successfully logged in!", user);
+        navigate("/");
+      } catch (error) {}
+    }
+
+    // Reset Form
     resetForm();
   };
 
   return (
-    <div className={styles.formContainer}>
-      <form className={styles.form} onSubmit={handleSubmit} noValidate>
-        {sections.map((item) => {
-          const inputType = item.inputType;
-
-          return (
-            <div className={styles.formSectionCategory} key={item.name}>
-              <label htmlFor={item.name}>{item.label}</label>
-
-              {(() => {
-                // Text, tel, number, or email field
-                if (
-                  inputType === "text" ||
-                  inputType === "tel" ||
-                  inputType === "number" ||
-                  inputType === "email"
-                ) {
-                  return (
+    <form
+      className={styles.form}
+      onSubmit={(e) => handleSubmit(e, inputData.email, inputData.password)}
+      noValidate
+    >
+      {sections.map((item) => {
+        return (
+          <div className={styles.formSectionCategory} key={item.name}>
+            {(() => {
+              // Text, tel, number, or email field
+              if (
+                item.inputType === "text" ||
+                item.inputType === "tel" ||
+                item.inputType === "number" ||
+                item.inputType === "email"
+              ) {
+                return (
+                  <>
+                    <label htmlFor={item.name}>{item.label}</label>
                     <input
                       type={item.inputType}
                       name={item.name}
                       id={item.name}
+                      className={styles.input}
                       placeholder={item.placeholder}
                       value={inputData[item.name] || ""}
-                      onChange={onChange}
+                      onChange={handleChange}
                     />
-                  );
-                }
+                  </>
+                );
+              }
 
-                // Subject -> options Field
-                else if (inputType === "subject") {
-                  return (
+              // Password
+              else if (item.inputType === "password") {
+                return (
+                  <>
+                    <label htmlFor={item.name}>{item.label}</label>
+                    <input
+                      type={item.inputType}
+                      name={item.name}
+                      id={item.name}
+                      className={styles.input}
+                      placeholder={item.placeholder}
+                      value={inputData[item.name] || ""}
+                      onChange={handleChange}
+                    ></input>
+                  </>
+                );
+              }
+
+              // Subject -> options Field
+              else if (item.inputType === "subject") {
+                return (
+                  <>
+                    <label htmlFor={item.name}>{item.label}</label>
                     <select
                       name={item.name}
                       id={item.name}
+                      className={styles.input}
                       value={inputData[item.name] || ""}
-                      onChange={onChange}
+                      onChange={handleChange}
                     >
                       {item.options.map((option) => (
                         <option key={option.value} value={option.value}>
@@ -136,37 +222,58 @@ const Form = ({ sections }) => {
                         </option>
                       ))}
                     </select>
-                  );
-                }
+                  </>
+                );
+              }
 
-                // Textarea Field
-                else if (inputType === "textarea") {
-                  return (
+              // Checkbox
+              else if (item.inputType === "checkbox") {
+                return (
+                  <div className={styles.checkboxContainer}>
+                    <input
+                      type={item.inputType}
+                      name={item.name}
+                      id={item.name}
+                      className={styles.inputCheckbox}
+                      checked={inputData[item.name] || item.placeholder}
+                      onChange={handleChangeCheckbox}
+                    />
+                    <label htmlFor={item.name}>{item.label}</label>
+                  </div>
+                );
+              }
+
+              // Textarea Field
+              else if (item.inputType === "textarea") {
+                return (
+                  <>
+                    <label htmlFor={item.name}>{item.label}</label>
                     <textarea
                       name={item.name}
                       id={item.name}
+                      className={styles.inputTextArea}
                       placeholder={item.placeholder}
-                      value={inputData[item.name] || ""}
-                      onChange={onChange}
+                      value={inputData[item.name]}
+                      onChange={handleChange}
                     ></textarea>
-                  );
-                }
+                  </>
+                );
+              }
 
-                // Fallback
-                else {
-                  return null;
-                }
-              })()}
+              // Fallback
+              else {
+                return null;
+              }
+            })()}
 
-              <p>{errorMessages[item.name]}</p>
-            </div>
-          );
-        })}
-        <div>
-          <Button buttonText={"Send Message"} />
-        </div>
-      </form>
-    </div>
+            <p>{errorMessages[item.name]}</p>
+          </div>
+        );
+      })}
+      <div>
+        <Button buttonText={submitButtonText} />
+      </div>
+    </form>
   );
 };
 
@@ -178,7 +285,7 @@ export default Form;
 // {
 //   label: "Label text: *",
 //   name: "name",
-//   inputType: "text", "email", "tel", "select", "number" or "textarea",
+//   inputType: "text", "number" "email", "tel", "password", "checkbox" "select", or "textarea",
 //   placeholder: "Specified placeholder",
 //   validate: "true" or "false"
 

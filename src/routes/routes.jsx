@@ -12,11 +12,16 @@ import ProductInfo from "../pages/ProductInfo/ProductInfo";
 import ProductStore from "../pages/ProductStore/ProductStore";
 import Contact from "../pages/Contact/Contact";
 import Basket from "../pages/Basket/Basket";
-import Profile from "../pages/Profile/Profile";
-import PageNotFound from "../pages//PageNotFound/PageNotFound";
+import SignIn from "../pages/SignIn/SignIn";
+import SignUp from "../pages/SignUp/SignUp";
+import MyProfile from "../pages/MyProfile/MyProfile";
 
 import Products from "../pages/ProductInfo/Products";
 import ProductsShowcase from "../pages/ProductInfo/ProductsShowcase";
+
+import PageNotFound from "../pages//PageNotFound/PageNotFound";
+
+// -----------------------------------------------------------------------
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -33,7 +38,9 @@ export const router = createBrowserRouter(
         <Route path="/product-store" element={<ProductStore />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/basket" element={<Basket />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/my-profile" element={<MyProfile />} />
         <Route path="*" element={<PageNotFound />} />
       </Route>
     </>
