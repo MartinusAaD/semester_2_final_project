@@ -129,15 +129,7 @@ const ProductStore = () => {
       <div className={styles.productStoreContainer}>
         <div className={styles.imageContainer}>
           {productInFocus && productInFocus.product && (
-            <h1>
-              {`${productInFocus.name} - 
-              ${productInFocus.product
-                .replace("bush", "Bush")
-                .replace("fruitTree", "Fruit Tree")
-                .replace("planks", "Planks")
-                .replace("seed", "Seed")
-                .replace("tree", "Tree")}`}
-            </h1>
+            <h1>{productInFocus.name}</h1>
           )}
           <img
             src={productInFocus?.imageUrl}
@@ -177,7 +169,7 @@ const ProductStore = () => {
                           alt={`Image of ${item.name}`}
                         />
                         <h6>
-                          {item.name.replace("Tree", "").replace("Bush", "")}
+                          {item.sort.replace("Tree", "").replace("Bush", "")}
                         </h6>
                       </NavLink>
                     </div>
@@ -194,7 +186,7 @@ const ProductStore = () => {
             <h3>Product:</h3>
             <div className={styles.productsContainer}>
               {itemList.map((item) => {
-                if (item.name === productSortInFocus.name) {
+                if (item.sort === productSortInFocus.sort) {
                   if (
                     !item.product.includes("basket") &&
                     !item.product.includes("branch")
