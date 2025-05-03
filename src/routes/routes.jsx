@@ -29,13 +29,16 @@ export const router = createBrowserRouter(
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
         <Route path="/product-info" element={<ProductInfo />}>
-          {/* Navigate to suggested by ChatGPT */}
           <Route index element={<Navigate to="trees" replace />} />
           <Route path=":category" element={<Products />}>
             <Route path=":productId" element={<ProductsShowcase />} />
           </Route>
         </Route>
-        <Route path="/product-store" element={<ProductStore />} />
+        <Route path="/product-store" element={<ProductStore />}>
+          <Route path=":category" element={<ProductStore />}>
+            <Route path=":productId" element={<ProductStore />} />
+          </Route>
+        </Route>
         <Route path="/contact" element={<Contact />} />
         <Route path="/basket" element={<Basket />} />
         <Route path="/sign-in" element={<SignIn />} />

@@ -6,7 +6,7 @@ const ProductInfo = () => {
   return (
     <>
       <NavbarProductInfo />
-      {/* Passing of "props" through Outlet with context suggested by ChatGPT */}
+      {/* Passing of "props" through Outlet with outletContext suggested by ChatGPT, similar to useContext */}
       <Outlet context={{ itemList }} />
     </>
   );

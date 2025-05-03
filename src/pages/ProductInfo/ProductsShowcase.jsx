@@ -1,6 +1,5 @@
 import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import styles from "./ProductsShowcase.module.css";
-import { useEffect } from "react";
 import Button from "../../Components/Button/Button";
 
 const ProductsShowcase = () => {

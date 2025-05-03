@@ -60,23 +60,26 @@ const Form = ({ sections, submitButtonText, typeOfForm }) => {
           isValid = false;
           errors[item.name] = "Phone Number must be 8 digits!";
         }
-        // Card Number
-      } else if (item.name === "cardNumber") {
+      }
+      // Card Number
+      else if (item.name === "cardNumber") {
         if (/^\d{13,19}$/.test(input)) {
           isValid = false;
-          errors[item.name] = "Please enter a valid card number";
+          errors[item.name] = item.errorMessage;
         }
-        // Card CvC
-      } else if (item.name === "cvc") {
+      }
+      // Card CvC
+      else if (item.name === "cvc") {
         if (/^\d{3,4}$/.test(input)) {
           isValid = false;
-          errors[item.name] = "Please enter a valid cvc";
+          errors[item.name] = item.errorMessage;
         }
-        // Card Expiry Date
-      } else if (item.name === "expiryDate") {
+      }
+      // Card Expiry Date
+      else if (item.name === "expiryDate") {
         if (/^(0[1-9]|1[0-2])\/?([0-9]{2}|[0-9]{4})$/.test(input)) {
           isValid = false;
-          errors[item.name] = "Please enter a valid expiry date";
+          errors[item.name] = item.errorMessage;
         }
       } else {
         errors[item.name] = "";
@@ -87,18 +90,21 @@ const Form = ({ sections, submitButtonText, typeOfForm }) => {
     return isValid;
   };
 
+  // Handle change in general
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInputData((prev) => ({ ...prev, [name]: value }));
     setErrorMessages((prev) => ({ ...prev, [name]: "" }));
   };
 
+  // Handle change for checkbox
   const handleChangeCheckbox = (e) => {
     const { name, checked } = e.target;
     setInputData((prev) => ({ ...prev, [name]: checked }));
     setErrorMessages((prev) => ({ ...prev, [name]: "" }));
   };
 
+  // Reset Form
   const resetForm = () => {
     const data = {};
     sections.map((item) => {
@@ -115,11 +121,12 @@ const Form = ({ sections, submitButtonText, typeOfForm }) => {
     e.preventDefault();
     const isFormValid = handleValidation();
 
+    // Checks validation
     if (!isFormValid) {
       return;
     }
 
-    // For Sign Up purposes
+    // For Sign-up purposes
     if (typeOfForm === "signUp") {
       try {
         const userCredential = await createUserWithEmailAndPassword(
@@ -136,6 +143,7 @@ const Form = ({ sections, submitButtonText, typeOfForm }) => {
       }
     }
 
+    // For Sign-in purposes
     if (typeOfForm === "signIn") {
       try {
         const userCredential = await signInWithEmailAndPassword(

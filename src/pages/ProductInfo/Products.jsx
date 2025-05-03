@@ -7,10 +7,9 @@ import {
   useParams,
 } from "react-router-dom";
 import styles from "./Products.module.css";
-import Button from "../../Components/Button/Button";
+import { useEffect } from "react";
 
 const Products = () => {
-  // Passing of "props" through Outlet suggested by ChatGPT
   const { itemList } = useOutletContext();
 
   // Suggested by ChatGPT to hide content when sub route is active
@@ -34,6 +33,11 @@ const Products = () => {
   const itemProperty = categoryMap[category];
 
   // -----------------------------------------------------
+
+  // Scroll to top when page is loaded from other routes
+  useEffect(() => {
+    scrollToTop();
+  }, []);
 
   const scrollToTop = () => {
     // Smooth or not?

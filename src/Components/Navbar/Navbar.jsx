@@ -1,12 +1,12 @@
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styles from "./Navbar.module.css";
+import { auth } from "../../firestoreConfig";
 
 // Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faUser } from "@fortawesome/free-solid-svg-icons";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../../firestoreConfig";
 
 const Navbar = () => {
   const setActiveClass = ({ isActive }) => (isActive ? styles.active : "");
