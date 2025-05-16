@@ -70,6 +70,7 @@ const Contact = () => {
             sections={sections}
             submitButtonText={"Send Message"}
             legendText={"Contact Information"}
+            buttonStyle={styles.submitButton}
           />
         </div>
       </div>

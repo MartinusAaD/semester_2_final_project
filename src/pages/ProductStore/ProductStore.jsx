@@ -247,7 +247,7 @@ const ProductStore = () => {
                   -
                 </Button>
 
-                <p>{count}</p>
+                <p className={styles.count}>{count}</p>
                 <Button
                   onClick={() => dispatch({ type: "INCREMENT", payload: 1 })}
                   className={styles.amountButtons}

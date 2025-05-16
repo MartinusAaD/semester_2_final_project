@@ -8,8 +8,15 @@ import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { useAuth } from "../../hooks/useAuth.js";
 
 // Form usage explained at bottom
-const Form = ({ sections, submitButtonText, typeOfForm, legendText }) => {
+const Form = ({
+  sections,
+  legendText,
+  typeOfForm,
+  buttonStyle,
+  submitButtonText,
+}) => {
   const [inputData, setInputData] = useState({});
+  const [submitMessage, setSubmitMessage] = useState("");
   const [errorMessages, setErrorMessages] = useState({});
   const [isInEditMode, setIsInEditMode] = useState(false);
 
@@ -132,6 +139,7 @@ const Form = ({ sections, submitButtonText, typeOfForm, legendText }) => {
         const userCredential = await signUp(email, password);
         const user = userCredential.user;
         console.log("User has been created!", user);
+        setSubmitMessage("Redirecting");
 
         await setDoc(doc(database, "users", user.uid), {
           ...inputData,
@@ -140,8 +148,12 @@ const Form = ({ sections, submitButtonText, typeOfForm, legendText }) => {
         });
 
         navigate("/verify-email");
+        setSubmitMessage("");
       } catch (error) {
-        console.log(error);
+        console.log(error.message);
+        setSubmitMessage(
+          "There was an error creating your account, try again!"
+        );
       }
     }
 
@@ -155,9 +167,12 @@ const Form = ({ sections, submitButtonText, typeOfForm, legendText }) => {
         );
         const user = userCredential.user;
         console.log("User has successfully logged in!", user);
+        setSubmitMessage("Redirecting");
         navigate("/");
+        setSubmitMessage("");
       } catch (error) {
         console.log(error.message);
+        setSubmitMessage("User does not exist, try again");
       }
     }
 
@@ -285,8 +300,9 @@ const Form = ({ sections, submitButtonText, typeOfForm, legendText }) => {
           );
         })}
       </fieldset>
+      <p>{submitMessage}</p>
       <div>
-        <Button className={styles.submitButton}>{submitButtonText}</Button>
+        <Button className={buttonStyle}>{submitButtonText}</Button>
       </div>
     </form>
   );

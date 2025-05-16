@@ -13,7 +13,7 @@
   --font-color-light: #fafafa;
   --font-color-dark: #1a1a1a;
 
-  --color-error: #fe3636;
+  --color-error: #FF0000;
 
   /* Spacing */
   --spacing-xs: 0.25rem;
@@ -37,5 +37,4 @@
 
   /* Shadow */
   --box-shadow-small: 0px 0px 3px 1px rgba(0, 0, 0, 0.77);
-
 }

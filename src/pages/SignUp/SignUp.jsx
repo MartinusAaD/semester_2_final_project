@@ -73,6 +73,7 @@ const SignUp = () => {
             submitButtonText={"Sign Up"}
             typeOfForm={"signUp"}
             legendText={"User Information"}
+            buttonStyle={styles.submitButton}
           />
         </div>
       </div>

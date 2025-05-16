@@ -3,7 +3,7 @@ label {
 }
 
 .form p {
-  font-size: var(--font-size-xs);
+  font-size: 0.9rem;
   color: var(--color-error);
   text-shadow: 1px 1px black;
 }

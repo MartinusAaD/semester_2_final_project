@@ -147,7 +147,9 @@
 .price {
 }
 
-.quantity {
+.count {
+  width: 25px;
+  text-align: center;
 }
 
 .addToCartContainer {
@@ -166,22 +168,45 @@
 
 .purchaseAmountContainer {
   display: flex;
-  justify-content: flex-end;
-  gap: var(--spacing-small);
+  gap: var(--spacing-medium);
 }
 
-.purchaseAmountContainer button {
+.amountButtons {
   padding: 0.2rem;
-  width: 32px;
-  height: 32px;
+  width: 42px;
+  height: 42px;
+  font-size: var(--font-size-small);
+  font-weight: bold;
+  color: var(--font-color-light);
+  background-color: var(--secondary-color);
+  border-radius: var(--border-radius-xs);
+  border: none;
+}
+
+.amountButtons:hover {
+  background-color: var(--secondary-color-darker);
+}
+
+.amountButtons:active {
+  transform: scale(0.9);
 }
 
 .addToCartButton {
+  padding: 0.2rem;
   flex: 1;
-  height: 32px;
+  height: 42px;
+  font-size: var(--font-size-small);
   font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: var(--spacing-xs);
+  color: var(--font-color-light);
+  background-color: var(--secondary-color);
+  border-radius: var(--border-radius-xs);
+  border: none;
+}
+
+.addToCartButton:hover {
+  background-color: var(--secondary-color-darker);
+}
+
+.addToCartButton:active {
+  transform: scale(0.9);
 }

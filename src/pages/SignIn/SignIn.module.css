@@ -23,3 +23,21 @@
 .formContainer p {
     align-self: flex-start;
 }
+
+.submitButton {
+  background-color: var(--primary-color);
+  color: var(--font-color-light);
+  font-weight: bold;
+  font-size: var(--font-size-base);
+  padding: var(--spacing-medium) var(--spacing-xl);
+  border-radius: var(--border-radius-small);
+  border: none;
+}
+
+.submitButton:hover {
+  background-color: var(--primary-color-darker);
+}
+
+.submitButton:active {
+  transform: scale(0.9);
+}
