@@ -56,7 +56,7 @@ export const productItems = [
     imageUrl: "/images/bush-raspberry.png",
     routePath: "raspberry-bush",
     quantity: 7,
-    price: 0.99,
+    price: 14.99,
     id: "6caf3d16-1535-50b1-95e4-443e12e0e890",
   },
   {

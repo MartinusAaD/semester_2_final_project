@@ -1,4 +1,9 @@
-import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
+import {
+  Navigate,
+  useLocation,
+  useNavigate,
+  useOutletContext,
+} from "react-router-dom";
 import styles from "./ProductsShowcase.module.css";
 import Button from "../../Components/Button/Button";
 
@@ -6,7 +11,7 @@ const ProductsShowcase = () => {
   const { itemList } = useOutletContext();
 
   // Checks the URL for which item to render
-  const navigateToPath = useNavigate();
+  const navigate = useNavigate();
   const location = useLocation();
   const pathOfProductInFocus = location.pathname.split("/").pop();
   const productInFocus = itemList.filter(
@@ -133,10 +138,9 @@ const ProductsShowcase = () => {
 
             {/* Go to Store Button */}
             <div className={styles.buttonContainer}>
-              <Button
-                buttonText={"Go to Store"}
-                onClickFunction={() => navigateToPath("/product-store")}
-              />
+              <Button onClick={() => navigate("/product-store")}>
+                Go to Store
+              </Button>
             </div>
           </div>
         </div>

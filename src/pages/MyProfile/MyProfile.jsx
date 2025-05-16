@@ -2,6 +2,7 @@ import { signOut } from "firebase/auth";
 import styles from "./MyProfile.module.css";
 import { auth } from "../../firestoreConfig";
 import { useNavigate } from "react-router-dom";
+import Button from "../../Components/Button/Button";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const Profile = () => {
   };
   return (
     <div>
-      <button onClick={handleSignOut}>Sign Out</button>
+      <Button onClick={handleSignOut}>Sign Out</Button>
     </div>
   );
 };

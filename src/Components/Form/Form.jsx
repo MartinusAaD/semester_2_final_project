@@ -9,7 +9,6 @@ import {
 } from "firebase/auth";
 
 // Form usage explained at bottom
-
 const Form = ({ sections, submitButtonText, typeOfForm }) => {
   const [inputData, setInputData] = useState({});
   const [errorMessages, setErrorMessages] = useState({});
@@ -279,7 +278,7 @@ const Form = ({ sections, submitButtonText, typeOfForm }) => {
         );
       })}
       <div>
-        <Button buttonText={submitButtonText} />
+        <Button className={styles.submitButton}>{submitButtonText}</Button>
       </div>
     </form>
   );

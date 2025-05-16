@@ -1,10 +1,4 @@
-import {
-  Link,
-  NavLink,
-  useNavigate,
-  useOutletContext,
-  useParams,
-} from "react-router-dom";
+import { Link, NavLink, useNavigate, useOutletContext } from "react-router-dom";
 import styles from "./ProductStore.module.css";
 import { useEffect, useReducer, useState } from "react";
 import countReducer from "../../reducers/countReducer";
@@ -12,6 +6,7 @@ import countReducer from "../../reducers/countReducer";
 // Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import Button from "../../Components/Button/Button";
 
 const ProductStore = () => {
   const { itemList } = useOutletContext();
@@ -23,9 +18,7 @@ const ProductStore = () => {
 
   const [count, dispatch] = useReducer(countReducer, 1);
 
-  const { category } = useParams();
-
-  const navigateToPath = useNavigate();
+  const navigate = useNavigate();
 
   // For routing properly
   const [productInfoUrl, setProductInfoUrl] = useState("/product-info");
@@ -58,21 +51,21 @@ const ProductStore = () => {
 
     switch (productTypeInFocus) {
       case "tree":
-        navigateToPath(`${productSort.routePath}/tree`);
+        navigate(`${productSort.routePath}/tree`);
         break;
 
       case "fruitTree":
-        navigateToPath(`${productSort.routePath}/fruit-tree`);
+        navigate(`${productSort.routePath}/fruit-tree`);
         break;
 
       case "bush":
-        navigateToPath(`${productSort.routePath}/bush`);
+        navigate(`${productSort.routePath}/bush`);
         break;
 
       default:
         break;
     }
-  }, [productTypeInFocus, itemList, navigateToPath]);
+  }, [productTypeInFocus, itemList, navigate]);
 
   // Runs when the sort of product is being changed
   useEffect(() => {
@@ -81,7 +74,7 @@ const ProductStore = () => {
         setProductInfoUrl(
           `/product-info/trees/${productSortInFocus.routePath}`
         );
-        navigateToPath(`/product-store/${productSortInFocus.routePath}/tree`);
+        navigate(`/product-store/${productSortInFocus.routePath}/tree`);
 
         break;
 
@@ -89,23 +82,21 @@ const ProductStore = () => {
         setProductInfoUrl(
           `/product-info/fruit-trees/${productSortInFocus.routePath}`
         );
-        navigateToPath(
-          `/product-store/${productSortInFocus.routePath}/fruit-tree`
-        );
+        navigate(`/product-store/${productSortInFocus.routePath}/fruit-tree`);
         break;
 
       case "bush":
         setProductInfoUrl(
           `/product-info/berry-bushes/${productSortInFocus.routePath}`
         );
-        navigateToPath(`/product-store/${productSortInFocus.routePath}/bush`);
+        navigate(`/product-store/${productSortInFocus.routePath}/bush`);
         break;
 
       default:
         setProductInfoUrl("/product-info");
         break;
     }
-  }, [productTypeInFocus, productSortInFocus, navigateToPath]);
+  }, [productTypeInFocus, productSortInFocus, navigate]);
 
   const handleChangeType = (e) => {
     setProductTypeInFocus(e.target.value);
@@ -249,25 +240,29 @@ const ProductStore = () => {
             {/* Purchase */}
             <div className={styles.addToCartContainer}>
               <div className={styles.purchaseAmountContainer}>
-                <button
+                <Button
                   onClick={() => dispatch({ type: "DECREMENT", payload: 1 })}
+                  className={styles.amountButtons}
                 >
                   -
-                </button>
+                </Button>
+
                 <p>{count}</p>
-                <button
+                <Button
                   onClick={() => dispatch({ type: "INCREMENT", payload: 1 })}
+                  className={styles.amountButtons}
                 >
                   +
-                </button>
+                </Button>
               </div>
 
-              <button
+              <Button
                 onClick={handleAddToCart}
                 className={styles.addToCartButton}
               >
-                Add to Cart <FontAwesomeIcon icon={faCartShopping} />
-              </button>
+                Add to Cart{" "}
+                <FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon>
+              </Button>
             </div>
           </div>
         </div>
