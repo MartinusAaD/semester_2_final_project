@@ -32,6 +32,7 @@ const SignIn = () => {
             sections={loginForm}
             submitButtonText={"Sign in"}
             typeOfForm={"signIn"}
+            legendText={"User Information"}
           />
           <p>
             Don't have an account? Register <Link to={"/sign-up"}>here</Link>

@@ -28,7 +28,7 @@ const ProductsShowcase = () => {
   return (
     <>
       <div className={styles.productsShowcaseRootContainer}>
-        <div className={styles.productsShowcaseContainer}>
+        <section className={styles.productsShowcaseContainer}>
           {/* Main Product */}
           {item[0] && (
             <div className={styles.productContainer}>
@@ -143,7 +143,7 @@ const ProductsShowcase = () => {
               </Button>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </>
   );

@@ -9,7 +9,7 @@ import {
 } from "firebase/auth";
 
 // Form usage explained at bottom
-const Form = ({ sections, submitButtonText, typeOfForm }) => {
+const Form = ({ sections, submitButtonText, typeOfForm, legendText }) => {
   const [inputData, setInputData] = useState({});
   const [errorMessages, setErrorMessages] = useState({});
   const [isInEditMode, setIsInEditMode] = useState(false);
@@ -166,117 +166,120 @@ const Form = ({ sections, submitButtonText, typeOfForm }) => {
       onSubmit={(e) => handleSubmit(e, inputData.email, inputData.password)}
       noValidate
     >
-      {sections.map((item) => {
-        return (
-          <div className={styles.formSectionCategory} key={item.name}>
-            {(() => {
-              // Text, tel, number, or email field
-              if (
-                item.inputType === "text" ||
-                item.inputType === "tel" ||
-                item.inputType === "number" ||
-                item.inputType === "email"
-              ) {
-                return (
-                  <>
-                    <label htmlFor={item.name}>{item.label}</label>
-                    <input
-                      type={item.inputType}
-                      name={item.name}
-                      id={item.name}
-                      className={styles.input}
-                      placeholder={item.placeholder}
-                      value={inputData[item.name] || ""}
-                      onChange={handleChange}
-                    />
-                  </>
-                );
-              }
+      <fieldset className={styles.fieldset}>
+        <legend className={styles.legend}>{legendText}</legend>
+        {sections.map((item) => {
+          return (
+            <div className={styles.formSectionCategory} key={item.name}>
+              {(() => {
+                // Text, tel, number, or email field
+                if (
+                  item.inputType === "text" ||
+                  item.inputType === "tel" ||
+                  item.inputType === "number" ||
+                  item.inputType === "email"
+                ) {
+                  return (
+                    <>
+                      <label htmlFor={item.name}>{item.label}</label>
+                      <input
+                        type={item.inputType}
+                        name={item.name}
+                        id={item.name}
+                        className={styles.input}
+                        placeholder={item.placeholder}
+                        value={inputData[item.name] || ""}
+                        onChange={handleChange}
+                      />
+                    </>
+                  );
+                }
 
-              // Password
-              else if (item.inputType === "password") {
-                return (
-                  <>
-                    <label htmlFor={item.name}>{item.label}</label>
-                    <input
-                      type={item.inputType}
-                      name={item.name}
-                      id={item.name}
-                      className={styles.input}
-                      placeholder={item.placeholder}
-                      value={inputData[item.name] || ""}
-                      onChange={handleChange}
-                    ></input>
-                  </>
-                );
-              }
+                // Password
+                else if (item.inputType === "password") {
+                  return (
+                    <>
+                      <label htmlFor={item.name}>{item.label}</label>
+                      <input
+                        type={item.inputType}
+                        name={item.name}
+                        id={item.name}
+                        className={styles.input}
+                        placeholder={item.placeholder}
+                        value={inputData[item.name] || ""}
+                        onChange={handleChange}
+                      ></input>
+                    </>
+                  );
+                }
 
-              // Subject -> options Field
-              else if (item.inputType === "subject") {
-                return (
-                  <>
-                    <label htmlFor={item.name}>{item.label}</label>
-                    <select
-                      name={item.name}
-                      id={item.name}
-                      className={styles.input}
-                      value={inputData[item.name] || ""}
-                      onChange={handleChange}
-                    >
-                      {item.options.map((option) => (
-                        <option key={option.value} value={option.value}>
-                          {option.optionLabel}
-                        </option>
-                      ))}
-                    </select>
-                  </>
-                );
-              }
+                // Subject -> options Field
+                else if (item.inputType === "subject") {
+                  return (
+                    <>
+                      <label htmlFor={item.name}>{item.label}</label>
+                      <select
+                        name={item.name}
+                        id={item.name}
+                        className={styles.input}
+                        value={inputData[item.name] || ""}
+                        onChange={handleChange}
+                      >
+                        {item.options.map((option) => (
+                          <option key={option.value} value={option.value}>
+                            {option.optionLabel}
+                          </option>
+                        ))}
+                      </select>
+                    </>
+                  );
+                }
 
-              // Checkbox
-              else if (item.inputType === "checkbox") {
-                return (
-                  <div className={styles.checkboxContainer}>
-                    <input
-                      type={item.inputType}
-                      name={item.name}
-                      id={item.name}
-                      className={styles.inputCheckbox}
-                      checked={inputData[item.name] || item.placeholder}
-                      onChange={handleChangeCheckbox}
-                    />
-                    <label htmlFor={item.name}>{item.label}</label>
-                  </div>
-                );
-              }
+                // Checkbox
+                else if (item.inputType === "checkbox") {
+                  return (
+                    <div className={styles.checkboxContainer}>
+                      <input
+                        type={item.inputType}
+                        name={item.name}
+                        id={item.name}
+                        className={styles.inputCheckbox}
+                        checked={inputData[item.name] || item.placeholder}
+                        onChange={handleChangeCheckbox}
+                      />
+                      <label htmlFor={item.name}>{item.label}</label>
+                    </div>
+                  );
+                }
 
-              // Textarea Field
-              else if (item.inputType === "textarea") {
-                return (
-                  <>
-                    <label htmlFor={item.name}>{item.label}</label>
-                    <textarea
-                      name={item.name}
-                      id={item.name}
-                      className={styles.inputTextArea}
-                      placeholder={item.placeholder}
-                      value={inputData[item.name]}
-                      onChange={handleChange}
-                    ></textarea>
-                  </>
-                );
-              }
+                // Textarea Field
+                else if (item.inputType === "textarea") {
+                  return (
+                    <>
+                      <label htmlFor={item.name}>{item.label}</label>
+                      <textarea
+                        name={item.name}
+                        id={item.name}
+                        className={styles.inputTextArea}
+                        placeholder={item.placeholder}
+                        value={inputData[item.name]}
+                        onChange={handleChange}
+                      ></textarea>
+                    </>
+                  );
+                }
 
-              // Fallback
-              else {
-                return null;
-              }
-            })()}
+                // Fallback
+                else {
+                  return null;
+                }
+              })()}
 
-            <p>{errorMessages[item.name]}</p>
-          </div>
-        );
-      })}
+              <p>{errorMessages[item.name]}</p>
+            </div>
+          );
+        })}
+      </fieldset>
       <div>
         <Button className={styles.submitButton}>{submitButtonText}</Button>
       </div>

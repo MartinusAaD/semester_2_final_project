@@ -17,6 +17,25 @@ label {
   gap: var(--spacing-medium);
 }
 
+.fieldset {
+  width: 100%;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-medium);
+
+  border: 1px solid var(--font-color-dark);
+  border-radius: var(--border-radius-small);
+  padding: var(--spacing-medium);
+}
+
+.legend {
+  padding: 0 var(--spacing-small);
+}
+
 .formSectionCategory {
   width: 100%;
   display: flex;

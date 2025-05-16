@@ -66,7 +66,11 @@ const Contact = () => {
       <div className={styles.formRootContainer}>
         <div className={styles.formContainer}>
           <h1>Contact</h1>
-          <Form sections={sections} submitButtonText={"Send Message"} />
+          <Form
+            sections={sections}
+            submitButtonText={"Send Message"}
+            legendText={"Contact Information"}
+          />
         </div>
       </div>
     </>

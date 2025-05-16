@@ -63,6 +63,7 @@ const SignUp = () => {
             sections={signUpForm}
             submitButtonText={"Sign Up"}
             typeOfForm={"signUp"}
+            legendText={"User Information"}
           />
         </div>
       </div>

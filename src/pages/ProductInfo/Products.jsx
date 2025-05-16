@@ -53,7 +53,7 @@ const Products = () => {
             .filter((item) => item.product === itemProperty)
             .map((item) => {
               return (
-                <div className={styles.productContainer} key={item.id}>
+                <section className={styles.productContainer} key={item.id}>
                   <div className={styles.imageContainer}>
                     <img
                       src={item.imageUrl}
@@ -81,7 +81,7 @@ const Products = () => {
                       </Link>
                     </div>
                   </div>
-                </div>
+                </section>
               );
             })}
         </div>
