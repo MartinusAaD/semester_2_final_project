@@ -23,7 +23,8 @@ const ProductStore = () => {
 
   const [count, dispatch] = useReducer(countReducer, 1);
 
-  const { productId } = useParams();
+  const { category } = useParams();
+
   const navigateToPath = useNavigate();
 
   // For routing properly
@@ -78,7 +79,7 @@ const ProductStore = () => {
     switch (productSortInFocus.product) {
       case "tree":
         setProductInfoUrl(
-          `/product-info/trees/${productSortInFocus.routePath}/tree`
+          `/product-info/trees/${productSortInFocus.routePath}`
         );
         navigateToPath(`/product-store/${productSortInFocus.routePath}/tree`);
 
@@ -86,7 +87,7 @@ const ProductStore = () => {
 
       case "fruitTree":
         setProductInfoUrl(
-          `/product-info/fruit-trees/${productSortInFocus.routePath}/fruit-tree`
+          `/product-info/fruit-trees/${productSortInFocus.routePath}`
         );
         navigateToPath(
           `/product-store/${productSortInFocus.routePath}/fruit-tree`
@@ -95,7 +96,7 @@ const ProductStore = () => {
 
       case "bush":
         setProductInfoUrl(
-          `/product-info/berry-bushes/${productSortInFocus.routePath}/bush`
+          `/product-info/berry-bushes/${productSortInFocus.routePath}`
         );
         navigateToPath(`/product-store/${productSortInFocus.routePath}/bush`);
         break;
@@ -135,6 +136,10 @@ const ProductStore = () => {
             src={productInFocus?.imageUrl}
             alt={`Image of ${productSortInFocus?.name}`}
           />
+          {/* More Info */}
+          <div className={styles.moreInfoContainer}>
+            <Link to={productInfoUrl}>More Info!</Link>
+          </div>
         </div>
         <div className={styles.productCategoryContainer}>
           <div className={styles.typeContainer}>
@@ -176,14 +181,10 @@ const ProductStore = () => {
                   );
                 })}
             </div>
-            {/* More Info */}
-            <div className={styles.moreInfoContainer}>
-              <Link to={productInfoUrl}>More Info!</Link>
-            </div>
           </div>
 
           <div className={styles.productsTypeContainer}>
-            <h3>Product:</h3>
+            <h3>Products:</h3>
             <div className={styles.productsContainer}>
               {itemList.map((item) => {
                 if (item.sort === productSortInFocus.sort) {

@@ -321,7 +321,7 @@ export const productItems = [
   },
   // Mahogany Tree
   {
-    name: "Mahogany Tree - Tree",
+    name: "Mahogany Tree",
     sort: "Mahogany Tree",
     type: "tree",
     product: "tree",
@@ -366,7 +366,7 @@ export const productItems = [
   },
   // Maple Tree
   {
-    name: "Maple Tree - Tree",
+    name: "Maple Tree",
     sort: "Maple Tree",
     type: "tree",
     product: "tree",
@@ -411,7 +411,7 @@ export const productItems = [
   },
   // Oak Tree
   {
-    name: "Oak Tree - Tree",
+    name: "Oak Tree",
     sort: "Oak Tree",
     type: "tree",
     product: "tree",
@@ -456,7 +456,7 @@ export const productItems = [
   },
   // Pine Tree
   {
-    name: "Pine Tree - Tree",
+    name: "Pine Tree",
     sort: "Pine Tree",
     type: "tree",
     product: "tree",
@@ -501,7 +501,7 @@ export const productItems = [
   },
   // Willow Tree
   {
-    name: "Willow Tree - Tree",
+    name: "Willow Tree",
     sort: "Willow Tree",
     type: "tree",
     product: "tree",
@@ -546,7 +546,7 @@ export const productItems = [
   },
   // Magic Tree
   {
-    name: "Magic Tree - Tree",
+    name: "Magic Tree",
     sort: "Magic Tree",
     type: "tree",
     product: "tree",

@@ -29,7 +29,7 @@
   border-radius: var(--border-radius-large);
   aspect-ratio: 1/1;
   object-fit: cover;
-  box-shadow: var(--box-shadow-small);
+  box-shadow: 0 0 20px 1px black;
 }
 
 .productCategoryContainer {
@@ -70,7 +70,7 @@
 }
 
 .moreInfoContainer {
-  align-self: flex-end;
+  padding: var(--spacing-medium);
 }
 
 .moreInfoContainer a {
