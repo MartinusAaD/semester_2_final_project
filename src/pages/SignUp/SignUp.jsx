@@ -28,6 +28,15 @@ const signUpForm = [
     validate: true,
   },
   {
+    label: "Phone Number: *",
+    name: "phoneNumber",
+    inputType: "tel",
+    placeholder: "Enter your phone number",
+    errorMessage: "Please enter your phone number!",
+    validate: true,
+  },
+
+  {
     label: "Password: *",
     name: "password",
     inputType: "password",

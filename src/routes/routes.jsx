@@ -20,6 +20,7 @@ import Products from "../pages/ProductInfo/Products";
 import ProductsShowcase from "../pages/ProductInfo/ProductsShowcase";
 
 import PageNotFound from "../pages//PageNotFound/PageNotFound";
+import VerifyEmail from "../pages/VerifyEmail/VerifyEmail";
 
 // -----------------------------------------------------------------------
 
@@ -43,6 +44,7 @@ export const router = createBrowserRouter(
         <Route path="/basket" element={<Basket />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/verify-email" element={<VerifyEmail />} />
         <Route path="/my-profile" element={<MyProfile />} />
         <Route path="*" element={<PageNotFound />} />
       </Route>

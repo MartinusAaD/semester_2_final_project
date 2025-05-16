@@ -2,11 +2,10 @@ import styles from "./Form.module.css";
 import Button from "../Button/Button.jsx";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../../firestoreConfig.js";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth, database } from "../../firestoreConfig.js";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { useAuth } from "../../hooks/useAuth.js";
 
 // Form usage explained at bottom
 const Form = ({ sections, submitButtonText, typeOfForm, legendText }) => {
@@ -20,6 +19,8 @@ const Form = ({ sections, submitButtonText, typeOfForm, legendText }) => {
   }, [sections]);
 
   const navigate = useNavigate();
+
+  const { user, signUp, signUpErrors } = useAuth();
 
   const handleValidation = () => {
     const errors = {};
@@ -128,15 +129,17 @@ const Form = ({ sections, submitButtonText, typeOfForm, legendText }) => {
     // For Sign-up purposes
     if (typeOfForm === "signUp") {
       try {
-        const userCredential = await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
+        const userCredential = await signUp(email, password);
         const user = userCredential.user;
         console.log("User has been created!", user);
 
-        navigate("/");
+        await setDoc(doc(database, "users", user.uid), {
+          ...inputData,
+          uid: user.uid,
+          createdAt: serverTimestamp(),
+        });
+
+        navigate("/verify-email");
       } catch (error) {
         console.log(error);
       }
@@ -153,7 +156,9 @@ const Form = ({ sections, submitButtonText, typeOfForm, legendText }) => {
         const user = userCredential.user;
         console.log("User has successfully logged in!", user);
         navigate("/");
-      } catch (error) {}
+      } catch (error) {
+        console.log(error.message);
+      }
     }
 
     // Reset Form
