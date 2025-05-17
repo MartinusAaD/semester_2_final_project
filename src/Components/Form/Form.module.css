@@ -51,6 +51,7 @@ select {
   align-items: center;
   border: none;
   border-radius: var(--border-radius-xs);
+  font-family: inherit;
 }
 
 textarea {
@@ -58,6 +59,7 @@ textarea {
   height: 100px;
   padding: var(--spacing-small);
   border-radius: var(--border-radius-xs);
+  font-family: inherit;
 }
 
 .checkboxContainer {

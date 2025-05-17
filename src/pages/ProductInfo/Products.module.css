@@ -85,6 +85,10 @@
   background-color: var(--primary-color-darker);
 }
 
+.moreInfoButton:active {
+  transform: scale(0.9);
+}
+
 @media screen and (max-width: 768px) {
   .productContainer {
     flex-direction: column;

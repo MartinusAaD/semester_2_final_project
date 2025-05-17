@@ -201,7 +201,9 @@ const Form = ({
                 ) {
                   return (
                     <>
-                      <label htmlFor={item.name}>{item.label}</label>
+                      <label htmlFor={item.name} title={item.placeholder}>
+                        {item.label}
+                      </label>
                       <input
                         type={item.inputType}
                         name={item.name}
@@ -219,7 +221,9 @@ const Form = ({
                 else if (item.inputType === "password") {
                   return (
                     <>
-                      <label htmlFor={item.name}>{item.label}</label>
+                      <label htmlFor={item.name} title={item.placeholder}>
+                        {item.label}
+                      </label>
                       <input
                         type={item.inputType}
                         name={item.name}
@@ -237,7 +241,9 @@ const Form = ({
                 else if (item.inputType === "subject") {
                   return (
                     <>
-                      <label htmlFor={item.name}>{item.label}</label>
+                      <label htmlFor={item.name} title={item.placeholder}>
+                        {item.label}
+                      </label>
                       <select
                         name={item.name}
                         id={item.name}
@@ -267,7 +273,9 @@ const Form = ({
                         checked={inputData[item.name] || item.placeholder}
                         onChange={handleChangeCheckbox}
                       />
-                      <label htmlFor={item.name}>{item.label}</label>
+                      <label htmlFor={item.name} title={item.placeholder}>
+                        {item.label}
+                      </label>
                     </div>
                   );
                 }
@@ -276,7 +284,9 @@ const Form = ({
                 else if (item.inputType === "textarea") {
                   return (
                     <>
-                      <label htmlFor={item.name}>{item.label}</label>
+                      <label htmlFor={item.name} title={item.placeholder}>
+                        {item.label}
+                      </label>
                       <textarea
                         name={item.name}
                         id={item.name}

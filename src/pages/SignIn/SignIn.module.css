@@ -21,7 +21,7 @@
 }
 
 .formContainer p {
-    align-self: flex-start;
+  align-self: flex-start;
 }
 
 .submitButton {
@@ -40,4 +40,73 @@
 
 .submitButton:active {
   transform: scale(0.9);
+}
+
+.resetPasswordButton {
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+  font-family: inherit;
+  font-size: var(--font-size-base);
+}
+
+.forgottenPasswordModalFormContainer {
+  width: 50%;
+  height: 400px;
+  background-color: var(--secondary-color);
+  padding: var(--spacing-large) var(--spacing-xl);
+  align-self: center;
+  justify-self: center;
+  border-radius: var(--border-radius-small);
+}
+
+.forgottenPasswordModalFormContainer fieldset {
+  height: 100%;
+  padding: var(--spacing-large);
+  border-radius: var(--border-radius-small);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: 1px solid var(--font-color-dark);
+}
+
+.forgottenPasswordModalFormContainer legend {
+  padding: 0 var(--spacing-small);
+}
+
+.groupContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-small);
+}
+
+.groupContainer input {
+  height: 42px;
+  padding-left: var(--spacing-small);
+  border-radius: var(--border-radius-small);
+  border: none;
+}
+
+.forgottenPasswordButtons {
+  display: flex;
+  gap: var(--spacing-large);
+}
+
+.forgottenPasswordButtons button {
+  flex: 1;
+  height: 42px;
+  border-radius: var(--border-radius-small);
+  border: none;
+  background-color: var(--primary-color);
+  color: var(--font-color-light);
+  font-weight: bold;
+  font-size: var(--font-size-base);
+}
+
+.forgottenPasswordButtons button:hover {
+  background-color: var(--primary-color-darker);
+}
+
+.forgottenPasswordButtons button:active {
+  transform: scale(0.95);
 }

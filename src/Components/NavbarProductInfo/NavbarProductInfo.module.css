@@ -26,6 +26,10 @@
   text-decoration: underline;
 }
 
+.navbar a:active {
+  transform: scale(0.9);
+}
+
 .active {
   text-decoration: underline !important;
 }

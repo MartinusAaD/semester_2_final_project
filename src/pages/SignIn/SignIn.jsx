@@ -37,10 +37,10 @@ const SignIn = () => {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!resetEmail.trim()) {
-      setResetMessage("Email is required to reset your password");
+      setResetMessage("Email is required to reset your password!");
       return;
     } else if (!emailRegex.test(resetEmail)) {
-      setResetMessage("Please enter a valid email address");
+      setResetMessage("Please enter a valid email address!");
       return;
     }
 
@@ -71,12 +71,15 @@ const SignIn = () => {
               buttonStyle={styles.submitButton}
             />
             <p>
-              Don't have an account? Register <Link to={"/sign-up"}>here</Link>
+              Don't have an account? <Link to={"/sign-up"}>Register here</Link>
             </p>
             <p>
-              Have you forgotten your password? Click{" "}
-              <Button onClick={() => setShowForgottenPasswordModal(true)}>
-                here
+              Have you forgotten your password?{" "}
+              <Button
+                onClick={() => setShowForgottenPasswordModal(true)}
+                className={styles.resetPasswordButton}
+              >
+                Reset Password
               </Button>
             </p>
           </div>
@@ -86,20 +89,25 @@ const SignIn = () => {
             <fieldset>
               <legend>Password Reset</legend>
               <p>
-                Enter your email address and click "Reset Password" to receive
-                an email with further instructions on how to reset your
-                password.
+                <strong>
+                  Enter your email address and click "Reset Password" to receive
+                  an email with further instructions on how to reset your
+                  password.
+                </strong>
               </p>
-              <label htmlFor="resetEmail">Reset Email: </label>
-              <input
-                type="email"
-                name="resetEmail"
-                id="resetEmail"
-                className={styles.formInput}
-                placeholder="Enter your email"
-                onChange={(e) => setResetEmail(e.target.value)}
-                value={resetEmail}
-              />
+              <div className={styles.groupContainer}>
+                <label htmlFor="resetEmail">Email: </label>
+                <input
+                  type="email"
+                  name="resetEmail"
+                  id="resetEmail"
+                  className={styles.formInput}
+                  placeholder="Enter your email"
+                  onChange={(e) => setResetEmail(e.target.value)}
+                  value={resetEmail}
+                />
+              </div>
+              <p>{resetMessage}</p>
               <div className={styles.forgottenPasswordButtons}>
                 <Button type={"submit"} onClick={handlePasswordReset}>
                   Reset Password
@@ -115,7 +123,6 @@ const SignIn = () => {
                   Cancel
                 </Button>
               </div>
-              <p>{resetMessage}</p>
             </fieldset>
           </form>
         )}

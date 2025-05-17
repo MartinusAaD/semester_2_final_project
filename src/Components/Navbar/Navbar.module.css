@@ -70,6 +70,10 @@
   text-decoration: underline;
 }
 
+.navbar__linksTextContainer a:active {
+  transform: scale(0.9);
+}
+
 .navbar__linksButtonsContainer {
   flex-basis: 25%;
   display: flex;
@@ -87,6 +91,10 @@
 
 .navbar__linksButton:hover {
   background-color: var(--secondary-color-darkest);
+}
+
+.navbar__linksButton:active {
+  transform: scale(0.9);
 }
 
 .active {

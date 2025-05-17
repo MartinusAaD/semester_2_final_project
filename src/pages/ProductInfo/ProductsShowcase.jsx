@@ -138,7 +138,7 @@ const ProductsShowcase = () => {
 
             {/* Go to Store Button */}
             <div className={styles.buttonContainer}>
-              <Button onClick={() => navigate("/product-store")}>
+              <Button className={styles.toStoreButton} onClick={() => navigate("/product-store")}>
                 Go to Store
               </Button>
             </div>

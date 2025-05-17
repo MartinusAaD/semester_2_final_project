@@ -90,6 +90,10 @@
   background-color: var(--primary-color-darker);
 }
 
+.moreInfoContainer a:active {
+  transform: scale(0.9);
+}
+
 .productTypeContainer {
   text-decoration: none;
   color: var(--font-color-dark);
@@ -208,5 +212,5 @@
 }
 
 .addToCartButton:active {
-  transform: scale(0.9);
+  transform: scale(0.95);
 }
