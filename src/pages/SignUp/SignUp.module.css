@@ -4,7 +4,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: var(--spacing-xl) 0;
+  padding: 6rem 0;
+  background-image: url("/images/background-image.png");
+
 }
 
 .formContainer {
@@ -37,4 +39,3 @@
 .submitButton:active {
   transform: scale(0.9);
 }
-

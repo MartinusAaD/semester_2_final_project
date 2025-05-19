@@ -1,9 +1,9 @@
 .rootContainer {
   width: 100%;
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   background-color: var(--background-color-light);
+  padding: 3rem 0;
 }
 
 .productStoreContainer {
