@@ -2,6 +2,7 @@
   width: 100%;
   height: 100vh;
   background-image: url("/images/background-image.png");
+  background-size: cover;
 
   display: flex;
   flex-direction: column;
@@ -30,4 +31,29 @@
 .description {
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+.toStoreButton {
+  width: 200px;
+  height: 42px;
+  border-radius: var(--border-radius-small);
+  border: none;
+  font-weight: bold;
+  background-color: var(--secondary-color);
+  color: var(--font-color-light);
+  margin-top: var(--spacing-medium);
+  text-decoration: none;
+  text-shadow: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toStoreButton:hover {
+  background-color: var(--secondary-color-darker);
+}
+
+.toStoreButton:active {
+  transform: scale(0.95);
 }

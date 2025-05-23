@@ -24,6 +24,7 @@ export const productItems = [
     price: 0.99,
     id: "c08029d0-603e-5184-804b-9f6bdb6d5947",
   },
+
   // Cloudberry Bush
   {
     name: "Cloudberry Bush",
@@ -47,6 +48,7 @@ export const productItems = [
     price: 0.99,
     id: "d1c42026-9867-56d3-ae6c-62996143cefc",
   },
+
   // Raspberry Bush
   {
     name: "Raspberry Bush",
@@ -70,6 +72,7 @@ export const productItems = [
     price: 0.99,
     id: "0403787c-c366-5ebd-92b7-03955bd0ca51",
   },
+
   // Strawberry Bush
   {
     name: "Strawberry Bush",
@@ -544,6 +547,7 @@ export const productItems = [
     price: 4.99,
     id: "c62d1af0-b8f6-534d-abcb-a81b1916cf90",
   },
+
   // Magic Tree
   {
     name: "Magic Tree",

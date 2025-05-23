@@ -12,8 +12,9 @@ const Profile = () => {
     navigate("/");
   };
   return (
-    <div>
+    <div className={styles.myProfileWrapper}>
       <Button onClick={handleSignOut}>Sign Out</Button>
+    
     </div>
   );
 };
