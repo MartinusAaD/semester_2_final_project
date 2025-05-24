@@ -4,6 +4,7 @@ import { useState } from "react";
 import { productItems } from "./assets/productData";
 import Navbar from "./Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer";
+import ImportProducts from "./Components/ImportProducts/ImportProducts";
 
 function App() {
   const [itemList, setItemList] = useState(productItems);

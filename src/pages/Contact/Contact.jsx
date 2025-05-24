@@ -63,7 +63,7 @@ const sections = [
 const Contact = () => {
   return (
     <>
-      <div className={styles.formRootContainer}>
+      <div className={styles.contactWrapper}>
         <div className={styles.formContainer}>
           <h1>Contact</h1>
           <Form

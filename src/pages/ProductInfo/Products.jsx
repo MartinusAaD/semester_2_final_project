@@ -3,14 +3,15 @@ import {
   matchPath,
   Outlet,
   useLocation,
-  useOutletContext,
   useParams,
 } from "react-router-dom";
 import styles from "./Products.module.css";
 import { useEffect } from "react";
+import { getProductsContext } from "../../context/productsContext";
 
 const Products = () => {
-  const { itemList } = useOutletContext();
+
+  const { products } = getProductsContext();
 
   // Suggested by ChatGPT to hide content when sub route is active
   const location = useLocation();
@@ -46,10 +47,10 @@ const Products = () => {
 
   return (
     <>
-      <Outlet context={{ itemList }} />
+      <Outlet context={{ products }} />
       {!isShowcaseActive && (
         <div className={styles.productsRootContainer}>
-          {itemList
+          {products
             .filter((item) => item.product === itemProperty)
             .map((item) => {
               return (

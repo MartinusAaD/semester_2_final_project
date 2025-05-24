@@ -1,4 +1,4 @@
-import { Link, NavLink, useNavigate, useOutletContext } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import styles from "./ProductStore.module.css";
 import { useEffect, useReducer, useState } from "react";
 import countReducer from "../../reducers/countReducer";
@@ -7,9 +7,11 @@ import countReducer from "../../reducers/countReducer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../Components/Button/Button";
+import { getProductsContext } from "../../context/productsContext";
 
 const ProductStore = () => {
-  const { itemList } = useOutletContext();
+  const { products } = getProductsContext();
+
   const [productTypeInFocus, setProductTypeInFocus] = useState("tree");
   const [productSortInFocus, setProductSortInFocus] = useState(
     "Cherry Blossom Tree"
@@ -47,9 +49,12 @@ const ProductStore = () => {
 
   // When the type of products is changed (Tree, fruit tree, bush), defaults to first object of sort
   useEffect(() => {
-    const productSort = itemList.find(
+    const productSort = products.find(
       (item) => item.product === productTypeInFocus
     );
+
+    if (!productSort) return;
+
     setProductSortInFocus(productSort);
 
     switch (productTypeInFocus) {
@@ -68,17 +73,18 @@ const ProductStore = () => {
       default:
         break;
     }
-  }, [productTypeInFocus, itemList, navigate]);
+  }, [productTypeInFocus, products, navigate]);
 
   // Runs when the sort of product is being changed
   useEffect(() => {
+    if (!productSortInFocus) return;
+
     switch (productSortInFocus.product) {
       case "tree":
         setProductInfoUrl(
           `/product-info/trees/${productSortInFocus.routePath}`
         );
         navigate(`/product-store/${productSortInFocus.routePath}/tree`);
-
         break;
 
       case "fruitTree":
@@ -128,13 +134,15 @@ const ProductStore = () => {
           )}
           <img
             src={productInFocus?.imageUrl}
-            alt={`Image of ${productSortInFocus?.name}`}
+            alt={`Image of ${productSortInFocus?.name ?? "product"}`}
           />
+
           {/* More Info */}
           <div className={styles.moreInfoContainer}>
             <Link to={productInfoUrl}>More Info!</Link>
           </div>
         </div>
+
         <div className={styles.productCategoryContainer}>
           <div className={styles.typeContainer}>
             <label htmlFor="productType">Product Type:</label>
@@ -153,7 +161,7 @@ const ProductStore = () => {
           <div className={styles.productsTypeContainer}>
             <h3>Product Sort:</h3>
             <div className={styles.productsContainer}>
-              {itemList
+              {products
                 .filter((item) => item.product === productTypeInFocus)
                 .map((item) => {
                   return (
@@ -180,7 +188,7 @@ const ProductStore = () => {
           <div className={styles.productsTypeContainer}>
             <h3>Products:</h3>
             <div className={styles.productsContainer}>
-              {itemList.map((item) => {
+              {products.map((item) => {
                 if (item.sort === productSortInFocus.sort) {
                   if (
                     !item.product.includes("basket") &&

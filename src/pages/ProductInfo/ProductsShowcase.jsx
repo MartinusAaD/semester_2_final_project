@@ -6,19 +6,20 @@ import {
 } from "react-router-dom";
 import styles from "./ProductsShowcase.module.css";
 import Button from "../../Components/Button/Button";
+import { getProductsContext } from "../../context/productsContext";
 
 const ProductsShowcase = () => {
-  const { itemList } = useOutletContext();
+  const { products } = getProductsContext();
 
   // Checks the URL for which item to render
   const navigate = useNavigate();
   const location = useLocation();
   const pathOfProductInFocus = location.pathname.split("/").pop();
-  const productInFocus = itemList.filter(
+  const productInFocus = products.filter(
     (item) => item.routePath === pathOfProductInFocus
   );
 
-  const item = itemList.filter((item) => item.sort === productInFocus[0].sort);
+  const item = products.filter((item) => item.sort === productInFocus[0].sort);
 
   const productBranch = item.find((item) => item.product === "branch") || "";
   const productSeed = item.find((item) => item.product === "seed") || "";
@@ -138,7 +139,10 @@ const ProductsShowcase = () => {
 
             {/* Go to Store Button */}
             <div className={styles.buttonContainer}>
-              <Button className={styles.toStoreButton} onClick={() => navigate("/product-store")}>
+              <Button
+                className={styles.toStoreButton}
+                onClick={() => navigate("/product-store")}
+              >
                 Go to Store
               </Button>
             </div>
