@@ -64,7 +64,7 @@
     "sort": "Strawberry Bush",
     "type": "Berry Bush",
     "product": "bush",
-    "imageUrl": "https://res.cloudinary.com/dfvvme4j3/image/upload/v1748099262/bush-seed-strawberry_jo8dg2.png",
+    "imageUrl": "https://res.cloudinary.com/dfvvme4j3/image/upload/v1748099269/bush-strawberry_ibdisi.png",
     "routePath": "strawberry-bush",
     "quantity": 0,
     "price": 14.99
@@ -74,7 +74,7 @@
     "sort": "Strawberry Bush",
     "type": "Berry Bush",
     "product": "seed",
-    "imageUrl": "https://res.cloudinary.com/dfvvme4j3/image/upload/v1748099269/bush-strawberry_ibdisi.png",
+    "imageUrl": "https://res.cloudinary.com/dfvvme4j3/image/upload/v1748099262/bush-seed-strawberry_jo8dg2.png",
     "routePath": "strawberry-bush",
     "quantity": 27,
     "price": 0.99
