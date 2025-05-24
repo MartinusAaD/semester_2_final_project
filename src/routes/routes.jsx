@@ -4,6 +4,7 @@ import {
   Navigate,
   Route,
 } from "react-router-dom";
+import { getAuthContext } from "../context/authContext";
 
 // Importing pages
 import App from "../App";
@@ -21,13 +22,43 @@ import ProductsShowcase from "../pages/ProductInfo/ProductsShowcase";
 
 import PageNotFound from "../pages//PageNotFound/PageNotFound";
 import VerifyEmail from "../pages/VerifyEmail/VerifyEmail";
+import Checkout from "../pages/Checkout/Checkout";
 
 // -----------------------------------------------------------------------
+
+const PrivateRoutesGuard = ({ children }) => {
+  const { user, loading } = getAuthContext();
+
+  if (loading) {
+    return;
+  }
+
+  if (!user) {
+    return <Navigate to="/sign-in" />;
+  }
+
+  return children;
+};
+
+const PublicRoutesGuard = ({ children }) => {
+  const { user, loading } = getAuthContext();
+
+  if (loading) {
+    return;
+  }
+
+  if (user) {
+    return <Navigate to="/my-profile" />;
+  }
+
+  return children;
+};
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<App />}>
+        {/* Public Routes */}
         <Route index element={<Home />} />
         <Route path="/product-info" element={<ProductInfo />}>
           <Route index element={<Navigate to="trees" replace />} />
@@ -42,11 +73,50 @@ export const router = createBrowserRouter(
         </Route>
         <Route path="/contact" element={<Contact />} />
         <Route path="/basket" element={<Basket />} />
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/verify-email" element={<VerifyEmail />} />
-        <Route path="/my-profile" element={<MyProfile />} />
+
+        <Route
+          path="/sign-in"
+          element={
+            <PublicRoutesGuard>
+              <SignIn />
+            </PublicRoutesGuard>
+          }
+        />
+        <Route
+          path="/sign-up"
+          element={
+            <PublicRoutesGuard>
+              <SignUp />
+            </PublicRoutesGuard>
+          }
+        />
         <Route path="*" element={<PageNotFound />} />
+
+        {/* Private Routes */}
+        <Route
+          path="/verify-email"
+          element={
+            <PrivateRoutesGuard>
+              <VerifyEmail />
+            </PrivateRoutesGuard>
+          }
+        />
+        <Route
+          path="/my-profile"
+          element={
+            <PrivateRoutesGuard>
+              <MyProfile />
+            </PrivateRoutesGuard>
+          }
+        />
+        <Route
+          path="/checkout"
+          element={
+            <PrivateRoutesGuard>
+              <Checkout />
+            </PrivateRoutesGuard>
+          }
+        />
       </Route>
     </>
   )

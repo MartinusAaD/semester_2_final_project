@@ -14,7 +14,6 @@ const Profile = () => {
   return (
     <div className={styles.myProfileWrapper}>
       <Button onClick={handleSignOut}>Sign Out</Button>
-    
     </div>
   );
 };

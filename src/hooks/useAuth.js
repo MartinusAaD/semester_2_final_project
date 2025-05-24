@@ -5,6 +5,7 @@ import {
 import { useState } from "react";
 import { auth } from "../firestoreConfig";
 
+// Create and verify new user
 export const useAuth = () => {
   const [user, setUser] = useState(null);
   const [signUpErrors, setSignUpErrors] = useState(null);

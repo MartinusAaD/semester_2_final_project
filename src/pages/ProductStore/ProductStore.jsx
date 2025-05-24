@@ -33,7 +33,10 @@ const ProductStore = () => {
     scrollToTop();
   }, []);
 
-  //
+  // Reset counter to default on product change
+  useEffect(() => {
+    dispatch({ type: "RESET", payload: 0 });
+  }, [productInFocus]);
 
   const setActiveClass = ({ isActive }) =>
     `${styles.productTypeContainer} ${isActive ? styles.active : ""}`;

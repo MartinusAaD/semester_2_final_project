@@ -1,5 +1,6 @@
 .formRootContainer {
   width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,7 +12,8 @@
 }
 
 .formContainer {
-  width: 50vw;
+  width: 50%;
+  min-width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
