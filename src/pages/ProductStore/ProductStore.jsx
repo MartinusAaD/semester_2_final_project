@@ -25,16 +25,6 @@ const ProductStore = () => {
   // For routing properly
   const [productInfoUrl, setProductInfoUrl] = useState("/product-info");
 
-  const scrollToTop = () => {
-    // Smooth or not?
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  // Scroll to top when page is loaded from other routes
-  useEffect(() => {
-    scrollToTop();
-  }, []);
-
   // Reset counter to default on product change
   useEffect(() => {
     dispatch({ type: "RESET", payload: 0 });

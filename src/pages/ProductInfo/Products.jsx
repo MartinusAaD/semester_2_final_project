@@ -10,7 +10,6 @@ import { useEffect } from "react";
 import { getProductsContext } from "../../context/productsContext";
 
 const Products = () => {
-
   const { products } = getProductsContext();
 
   // Suggested by ChatGPT to hide content when sub route is active
@@ -32,18 +31,6 @@ const Products = () => {
   };
 
   const itemProperty = categoryMap[category];
-
-  // -----------------------------------------------------
-
-  // Scroll to top when page is loaded from other routes
-  useEffect(() => {
-    scrollToTop();
-  }, []);
-
-  const scrollToTop = () => {
-    // Smooth or not?
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   return (
     <>
@@ -74,9 +61,6 @@ const Products = () => {
                       <Link
                         to={item.routePath}
                         className={styles.moreInfoButton}
-                        onClick={() => {
-                          scrollToTop();
-                        }}
                       >
                         More info!
                       </Link>

@@ -108,7 +108,10 @@ export const router = createBrowserRouter(
               <MyProfile />
             </PrivateRoutesGuard>
           }
-        />
+        >
+          <Route path="orders" element={<MyProfile />} />
+        </Route>
+
         <Route
           path="/checkout"
           element={

@@ -4,11 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../../firestoreConfig";
 import { sendEmailVerification } from "firebase/auth";
 import Button from "../../Components/Button/Button";
+import { getAuthContext } from "../../context/authContext";
 
 const VerifyEmail = () => {
   const [emailVerified, setEmailVerified] = useState(false);
-  const [emailSent, setEmailSent] = useState(false);
-  const { errors, setErrors } = useState(null);
+  const [feedbackMessage, setFeedbackMessage] = useState(null);
+
+  const { user, loading } = getAuthContext();
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,7 +20,7 @@ const VerifyEmail = () => {
       setEmailVerified(auth.currentUser.emailVerified);
 
       if (auth.currentUser.emailVerified) {
-        navigate("/");
+        navigate("/my-profile");
       }
     };
     const interval = setInterval(checkVerificationStatus, 5000);
@@ -25,14 +28,19 @@ const VerifyEmail = () => {
   }, []);
 
   const handleResendVerification = async () => {
-    setErrors(null);
+    setFeedbackMessage("");
+
     try {
+      if (loading) {
+        return;
+      }
       await sendEmailVerification(auth.currentUser);
-      setEmailSent(true);
+      setFeedbackMessage(
+        "A new verification email has been sent, please check your inbox!"
+      );
     } catch (error) {
-      setErrors(
-        "Error re-sending verification email! Please try again later.",
-        error.message
+      setFeedbackMessage(
+        `Error re-sending verification email! Please try again later. ${error.message}`
       );
     }
   };
@@ -60,12 +68,9 @@ const VerifyEmail = () => {
               Resend verification email
             </Button>
 
-            {emailSent && (
-              <p className={styles.successMessage}>
-                A new verification email has been sent, please check your inbox!
-              </p>
+            {feedbackMessage && (
+              <p className={styles.feedbackMessage}>{feedbackMessage}</p>
             )}
-            {errors && <p className={styles.errorMessage}>{errors}</p>}
           </div>
         )}
       </div>

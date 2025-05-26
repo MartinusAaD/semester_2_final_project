@@ -29,3 +29,20 @@
   align-items: center;
   gap: var(--spacing-large);
 }
+
+.resendButton {
+  padding: var(--spacing-medium);
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: var(--border-radius-small);
+  color: white;
+  font-weight: bold;
+}
+
+.resendButton:hover {
+  background-color: var(--secondary-color-darker);
+}
+
+.resendButton:active {
+  transform: scale(0.95);
+}

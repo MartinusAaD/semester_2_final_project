@@ -20,6 +20,22 @@ const signUpForm = [
     validate: true,
   },
   {
+    label: "Address: *",
+    name: "address",
+    inputType: "text",
+    placeholder: "Enter your address",
+    errorMessage: "Please enter your user address!",
+    validate: true,
+  },
+  {
+    label: "Postal Code: *",
+    name: "postalCode",
+    inputType: "number",
+    placeholder: "Enter your postal code",
+    errorMessage: "Please enter your user postal code!",
+    validate: true,
+  },
+  {
     label: "Email: *",
     name: "email",
     inputType: "email",
@@ -53,7 +69,7 @@ const signUpForm = [
     validate: true,
   },
   {
-    label: "I accept the Terms & Conditions",
+    label: "I accept the Terms & Conditions *",
     name: "terms",
     inputType: "checkbox",
     placeholder: false,
