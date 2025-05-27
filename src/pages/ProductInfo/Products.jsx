@@ -47,6 +47,14 @@ const Products = () => {
                       src={item.imageUrl}
                       alt={`Image of ${item.name}`}
                       className={styles.productImage}
+                      //onError code by ChatGpt
+                      onError={(e) => {
+                        e.target.onerror = null; // prevent infinite loop
+                        e.target.src = "/images/image-not-found.jpg";
+                        e.target.alt = `Fallback image of ${
+                          item.name ?? "product"
+                        }`;
+                      }}
                     />
                   </div>
 

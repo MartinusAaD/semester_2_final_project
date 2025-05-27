@@ -38,6 +38,14 @@ const ProductsShowcase = () => {
                 src={item[0].imageUrl}
                 alt={`Image of ${item[0].name}`}
                 className={styles.productImage}
+                //onError code by ChatGpt
+                onError={(e) => {
+                  e.target.onerror = null; // prevent infinite loop
+                  e.target.src = "/images/image-not-found.jpg";
+                  e.target.alt = `Fallback image of ${
+                    item[0].name ?? "product"
+                  }`;
+                }}
               />
             </div>
           )}
@@ -52,8 +60,16 @@ const ProductsShowcase = () => {
                   <h2>{productBranch.name}</h2>
                   <img
                     src={productBranch.imageUrl}
-                    alt={`Image of ${productSeed.name} branch`}
+                    alt={`Image of ${productBranch.name} branch`}
                     className={styles.productImage}
+                    //onError code by ChatGpt
+                    onError={(e) => {
+                      e.target.onerror = null; // prevent infinite loop
+                      e.target.src = "/images/image-not-found.jpg";
+                      e.target.alt = `Fallback image of ${
+                        productBranch.name ?? "product"
+                      }`;
+                    }}
                   />
                 </div>
                 <div>
@@ -77,6 +93,14 @@ const ProductsShowcase = () => {
                     src={productSeed.imageUrl}
                     alt={`Image of ${productSeed.name} seed`}
                     className={styles.productImage}
+                    //onError code by ChatGpt
+                    onError={(e) => {
+                      e.target.onerror = null; // prevent infinite loop
+                      e.target.src = "/images/image-not-found.jpg";
+                      e.target.alt = `Fallback image of ${
+                        productSeed.name ?? "product"
+                      }`;
+                    }}
                   />
                 </div>
                 <div>
@@ -100,6 +124,14 @@ const ProductsShowcase = () => {
                     src={productBasket.imageUrl}
                     alt={`Image of ${productBasket.name} basket`}
                     className={styles.productImage}
+                    //onError code by ChatGpt
+                    onError={(e) => {
+                      e.target.onerror = null; // prevent infinite loop
+                      e.target.src = "/images/image-not-found.jpg";
+                      e.target.alt = `Fallback image of ${
+                        productBasket.name ?? "product"
+                      }`;
+                    }}
                   />
                 </div>
 
@@ -124,6 +156,14 @@ const ProductsShowcase = () => {
                     src={productPlanks.imageUrl}
                     alt={`Image of ${productPlanks.name} plank`}
                     className={styles.productImage}
+                    //onError code by ChatGpt
+                    onError={(e) => {
+                      e.target.onerror = null; // prevent infinite loop
+                      e.target.src = "/images/image-not-found.jpg";
+                      e.target.alt = `Fallback image of ${
+                        productPlanks.name ?? "product"
+                      }`;
+                    }}
                   />
                 </div>
 

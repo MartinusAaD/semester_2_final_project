@@ -71,8 +71,14 @@ const Profile = () => {
                 <div className={styles.imageContainer}>
                   <img
                     src={userData?.profilePicture}
-                    alt=""
+                    alt="Users profile picture"
                     className={styles.profilePicture}
+                    //onError code by ChatGpt
+                    onError={(e) => {
+                      e.target.onerror = null; // prevent infinite loop
+                      e.target.src = "/images/image-not-found.jpg";
+                      e.target.alt = `Fallback image of users profile picture`;
+                    }}
                   />
                 </div>
               ) : (

@@ -125,6 +125,14 @@ const ProductStore = () => {
           <img
             src={productInFocus?.imageUrl}
             alt={`Image of ${productSortInFocus?.name ?? "product"}`}
+            //onError code by ChatGpt
+            onError={(e) => {
+              e.target.onerror = null; // prevent infinite loop
+              e.target.src = "/images/image-not-found.jpg";
+              e.target.alt = `Fallback image of ${
+                productSortInFocus?.name ?? "product"
+              }`;
+            }}
           />
 
           {/* More Info */}
@@ -164,6 +172,14 @@ const ProductStore = () => {
                         <img
                           src={item.imageUrl}
                           alt={`Image of ${item.name}`}
+                          //onError code by ChatGpt
+                          onError={(e) => {
+                            e.target.onerror = null; // prevent infinite loop
+                            e.target.src = "/images/image-not-found.jpg";
+                            e.target.alt = `Fallback image of ${
+                              item.name ?? "product"
+                            }`;
+                          }}
                         />
                         <h6>
                           {item.sort.replace("Tree", "").replace("Bush", "")}
@@ -197,6 +213,14 @@ const ProductStore = () => {
                           <img
                             src={item.imageUrl}
                             alt={`Image of ${item.name}`}
+                            //onError code by ChatGpt
+                            onError={(e) => {
+                              e.target.onerror = null; // prevent infinite loop
+                              e.target.src = "/images/image-not-found.jpg";
+                              e.target.alt = `Fallback image of ${
+                                item.name ?? "product"
+                              }`;
+                            }}
                           />
                           <h6>
                             {(() => {
