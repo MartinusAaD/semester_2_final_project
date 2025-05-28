@@ -70,14 +70,14 @@ const Form = ({
       }
       // Card Number
       else if (item.name === "cardNumber") {
-        if (/^\d{13,19}$/.test(input)) {
+        if (!/^\d{13,19}$/.test(input)) {
           isValid = false;
           errors[item.name] = item.errorMessage;
         }
       }
       // Card CvC
       else if (item.name === "cvc") {
-        if (/^\d{3,4}$/.test(input)) {
+        if (!/^\d{3,4}$/.test(input)) {
           isValid = false;
           errors[item.name] = item.errorMessage;
         }
@@ -135,6 +135,9 @@ const Form = ({
 
     // For Sign-up purposes
     if (typeOfForm === "signUp") {
+      const { password, confirmPassword, ...inputDataWithoutPassword } =
+        inputData;
+
       try {
         const userCredential = await signUp(email, password);
         const user = userCredential.user;
@@ -142,7 +145,7 @@ const Form = ({
         setSubmitMessage("Redirecting");
 
         await setDoc(doc(database, "users", user.uid), {
-          ...inputData,
+          ...inputDataWithoutPassword,
           uid: user.uid,
           createdAt: serverTimestamp(),
         });

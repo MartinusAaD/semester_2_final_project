@@ -212,7 +212,7 @@ const Profile = () => {
                     htmlFor="email"
                     title="Emails must use a similar format 'john.doe@email.com'"
                   >
-                    Email: 
+                    Email:
                   </label>
                   <input
                     type="email"
@@ -343,7 +343,7 @@ const Profile = () => {
             <div className={styles.buttonContainer}>
               {!isInEditMode && (
                 <Button
-                  className={styles.editButton}
+                  className={styles.formButton}
                   onClick={changeToEdit}
                   type={"button"}
                 >
@@ -353,9 +353,9 @@ const Profile = () => {
 
               {isInEditMode && (
                 <>
-                  <Button className={styles.editButton}>Confirm</Button>
+                  <Button className={styles.formButton}>Confirm</Button>
                   <Button
-                    className={styles.editButton}
+                    className={styles.formButton}
                     onClick={cancelEditMode}
                     type={"button"}
                   >
