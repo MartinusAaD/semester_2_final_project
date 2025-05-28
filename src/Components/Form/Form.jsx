@@ -214,6 +214,7 @@ const Form = ({
                         className={styles.input}
                         placeholder={item.placeholder}
                         value={inputData[item.name] || ""}
+                        title={item.placeholder}
                         onChange={handleChange}
                       />
                     </>
@@ -234,6 +235,7 @@ const Form = ({
                         className={styles.input}
                         placeholder={item.placeholder}
                         value={inputData[item.name] || ""}
+                        title={item.placeholder}
                         onChange={handleChange}
                       ></input>
                     </>
@@ -252,6 +254,7 @@ const Form = ({
                         id={item.name}
                         className={styles.input}
                         value={inputData[item.name] || ""}
+                        title={item.placeholder}
                         onChange={handleChange}
                       >
                         {item.options.map((option) => (
@@ -274,6 +277,7 @@ const Form = ({
                         id={item.name}
                         className={styles.inputCheckbox}
                         checked={inputData[item.name] || item.placeholder}
+                        title={item.placeholder}
                         onChange={handleChangeCheckbox}
                       />
                       <label htmlFor={item.name} title={item.placeholder}>
@@ -296,6 +300,7 @@ const Form = ({
                         className={styles.inputTextArea}
                         placeholder={item.placeholder}
                         value={inputData[item.name]}
+                        title={item.placeholder}
                         onChange={handleChange}
                       ></textarea>
                     </>
@@ -308,7 +313,7 @@ const Form = ({
                 }
               })()}
 
-              <p>{errorMessages[item.name]}</p>
+              <p className={styles.errorMessages}>{errorMessages[item.name]}</p>
             </div>
           );
         })}

@@ -8,6 +8,8 @@
 
   background-image: url("/images/background-image.png");
   background-size: cover;
+
+  color: var(--font-color-light);
 }
 
 .verifyContainer {

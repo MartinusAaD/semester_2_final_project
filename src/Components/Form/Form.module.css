@@ -15,6 +15,8 @@ label {
   justify-content: center;
   align-items: center;
   gap: var(--spacing-medium);
+
+  color: var(--font-color-light);
 }
 
 .fieldset {
@@ -27,9 +29,11 @@ label {
   align-items: center;
   gap: var(--spacing-medium);
 
-  border: 1px solid var(--font-color-dark);
+  border: 1px solid var(--font-color-light);;
   border-radius: var(--border-radius-small);
   padding: var(--spacing-medium);
+
+  
 }
 
 .legend {
@@ -66,4 +70,8 @@ textarea {
   display: flex;
   align-items: center;
   gap: var(--spacing-large);
+}
+
+.errorMessages{
+  height: var(--font-size-base);
 }

@@ -9,6 +9,8 @@
 
   background-image: url("/images/background-image.png");
   background-size: cover;
+
+  color: var(--font-color-light);
 }
 
 .formContainer {
@@ -18,7 +20,7 @@
   justify-content: center;
   align-items: center;
   gap: var(--spacing-medium);
-  background-color: var(--secondary-color);
+  background-color: rgba(0, 0, 0, 0.8);
   border-radius: var(--border-radius-medium);
   box-shadow: var(--box-shadow-small);
   padding: var(--spacing-xl);
@@ -29,17 +31,17 @@
 }
 
 .submitButton {
-  background-color: var(--primary-color);
   color: var(--font-color-light);
   font-weight: bold;
   font-size: var(--font-size-base);
   padding: var(--spacing-medium) var(--spacing-xl);
   border-radius: var(--border-radius-small);
   border: none;
+  color: var(--font-color-dark);
 }
 
 .submitButton:hover {
-  background-color: var(--primary-color-darker);
+  opacity: 0.9;
 }
 
 .submitButton:active {
@@ -52,12 +54,13 @@
   text-decoration: underline;
   font-family: inherit;
   font-size: var(--font-size-base);
+  color: var(--font-color-light);
 }
 
 .forgottenPasswordModalFormContainer {
   width: 50%;
   height: 400px;
-  background-color: var(--secondary-color);
+  background-color: rgba(0, 0, 0, 0.8);
   padding: var(--spacing-large) var(--spacing-xl);
   align-self: center;
   justify-self: center;
@@ -71,7 +74,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  border: 1px solid var(--font-color-dark);
 }
 
 .forgottenPasswordModalFormContainer legend {
@@ -101,14 +103,14 @@
   height: 42px;
   border-radius: var(--border-radius-small);
   border: none;
-  background-color: var(--primary-color);
   color: var(--font-color-light);
   font-weight: bold;
   font-size: var(--font-size-base);
+  color: var(--font-color-dark);
 }
 
 .forgottenPasswordButtons button:hover {
-  background-color: var(--primary-color-darker);
+  opacity: 0.9;
 }
 
 .forgottenPasswordButtons button:active {

@@ -65,7 +65,7 @@ const Contact = () => {
     <>
       <div className={styles.contactWrapper}>
         <div className={styles.formContainer}>
-          <h1>Contact</h1>
+          <h1 className={styles.header}>Contact</h1>
           <Form
             sections={sections}
             submitButtonText={"Send Message"}

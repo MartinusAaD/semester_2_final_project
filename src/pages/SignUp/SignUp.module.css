@@ -8,6 +8,8 @@
   padding: 6rem 0;
   background-image: url("/images/background-image.png");
   background-size: cover;
+
+  color: var(--font-color-light);
 }
 
 .formContainer {
@@ -17,15 +19,14 @@
   justify-content: center;
   align-items: center;
   gap: var(--spacing-medium);
-  background-color: var(--secondary-color);
+  background-color: rgba(0, 0, 0, 0.8);
   border-radius: var(--border-radius-medium);
   box-shadow: var(--box-shadow-small);
   padding: var(--spacing-xl);
 }
 
 .submitButton {
-  background-color: var(--primary-color);
-  color: var(--font-color-light);
+  color: var(--font-color-dark);
   font-weight: bold;
   font-size: var(--font-size-base);
   padding: var(--spacing-medium) var(--spacing-xl);
@@ -34,9 +35,9 @@
 }
 
 .submitButton:hover {
-  background-color: var(--primary-color-darker);
+  opacity: 0.9;
 }
 
 .submitButton:active {
-  transform: scale(0.9);
+  transform: scale(0.95);
 }
