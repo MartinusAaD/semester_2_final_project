@@ -60,7 +60,7 @@
 .forgottenPasswordModalFormContainer {
   width: 50%;
   height: 400px;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: var(--container-color-black);
   padding: var(--spacing-large) var(--spacing-xl);
   align-self: center;
   justify-self: center;

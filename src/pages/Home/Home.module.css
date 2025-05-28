@@ -18,8 +18,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: var(--border-radius-small);
+  gap: var(--spacing-medium);
 
+  border-radius: var(--border-radius-large);
+  background-color: var(--container-color-black);
   color: var(--font-color-light);
   text-shadow: -2px 2px 10px black;
 }
@@ -39,8 +41,8 @@
   border-radius: var(--border-radius-small);
   border: none;
   font-weight: bold;
-  background-color: var(--secondary-color);
-  color: var(--font-color-light);
+  background-color: white;
+  color: var(--font-color-dark);
   margin-top: var(--spacing-medium);
   text-decoration: none;
   text-shadow: none;
@@ -51,7 +53,7 @@
 }
 
 .toStoreButton:hover {
-  background-color: var(--secondary-color-darker);
+  background-color: rgb(216, 216, 216);
 }
 
 .toStoreButton:active {

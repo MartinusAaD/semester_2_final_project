@@ -3,10 +3,9 @@
   display: flex;
   justify-content: center;
   padding: var(--spacing-small);
-  background-color: var(--secondary-color);
-  /* background-color: rgba(0, 0, 0, 0.8); */
-   position: fixed;
-   top: 4.5rem;
+  background-color: var(--container-color-black);
+  position: fixed;
+  top: 4.5rem;
   z-index: 1000;
 }
 

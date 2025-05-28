@@ -21,7 +21,7 @@
   padding: var(--spacing-large) var(--spacing-medium);
   box-shadow: var(--box-shadow-small);
   border-radius: var(--border-radius-small);
-  background-color: var(--primary-color);
+  background-color: var(--container-color-black);
 }
 
 .verificationContainer {
@@ -34,15 +34,14 @@
 
 .resendButton {
   padding: var(--spacing-medium);
-  background-color: var(--secondary-color);
   border: none;
   border-radius: var(--border-radius-small);
-  color: white;
+  color: var(--font-color-dark);
   font-weight: bold;
 }
 
 .resendButton:hover {
-  background-color: var(--secondary-color-darker);
+  opacity: 0.9;
 }
 
 .resendButton:active {

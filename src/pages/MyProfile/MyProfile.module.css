@@ -18,7 +18,7 @@
   justify-content: flex-start;
   align-items: center;
   gap: var(--spacing-large);
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: var(--container-color-black);
   border-radius: var(--border-radius-small);
 }
 
