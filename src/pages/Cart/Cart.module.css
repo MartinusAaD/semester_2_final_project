@@ -159,10 +159,13 @@
   display: flex;
   justify-content: flex-end;
   gap: var(--spacing-xl);
+  padding: var(--spacing-xl) 0;
 }
 
 .totalPriceHeader {
   color: var(--font-color-light);
+  display: flex;
+  gap: 1rem;
 }
 
 /* ------------------ */
@@ -174,6 +177,7 @@
   border: none;
   font-weight: bold;
   font-size: var(--font-size-medium);
+  margin: var(--spacing-medium) 0;
 }
 
 .checkoutButton:hover {

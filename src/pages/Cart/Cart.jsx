@@ -6,14 +6,18 @@ import styles from "./Cart.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import countReducer from "../../reducers/countReducer";
-import { useMemo, useReducer } from "react";
+import { useMemo, useReducer, useState } from "react";
+import useCurrencyConverter from "../../hooks/useCurrencyCoverter";
 
 const Cart = () => {
   const { cart, dispatch } = getCartContext();
   const { user } = getAuthContext();
   const navigate = useNavigate();
+  const [currencyType, setCurrencyType] = useState("USD");
 
   const [count, countDispatch] = useReducer(countReducer, 1);
+
+  const { rates } = useCurrencyConverter();
 
   const handleIncreaseAmount = (item) => {
     dispatch({ type: "INCREASE_QUANTITY", payload: item.id });
@@ -39,16 +43,31 @@ const Cart = () => {
     }
   };
 
+  const priceConversion = (item) => {
+    if (!rates || !currencyType || !rates[currencyType]) return "0.00"; // Got help with this line from chatGPT, rates had not rendered fast enough, site crashed.
+
+    const convertedPrice = item.price * rates[currencyType];
+    return convertedPrice.toFixed(2);
+  };
+
   const productTotalPrice = (item) => {
-    const price = item.price * item.cartQuantity;
-    return price.toFixed(2);
+    if (!rates || !currencyType || !rates[currencyType]) return "0.00"; // Got help with this line from chatGPT, rates had not rendered fast enough, site crashed.
+
+    const basePrice = item.price * item.cartQuantity;
+    const convertedPrice = basePrice * rates[currencyType];
+    return convertedPrice.toFixed(2);
   };
 
   const totalPrice = useMemo(() => {
-    return cart
-      .reduce((total, item) => total + item.price * item.cartQuantity, 0)
-      .toFixed(2);
-  }, [cart]);
+    if (!rates || !currencyType || !rates[currencyType]) return "0.00"; // Got help with this line from chatGPT, rates had not rendered fast enough, site crashed.
+
+    const cartPrice = cart.reduce(
+      (total, item) => total + item.price * item.cartQuantity,
+      0
+    );
+    const convertedCartPrice = cartPrice * rates[currencyType];
+    return convertedCartPrice.toFixed(2);
+  }, [cart, currencyType, rates]);
 
   return (
     <div className={styles.cartWrapper}>
@@ -69,12 +88,14 @@ const Cart = () => {
                 <h2 className={styles.productName}>{item.name}</h2>
                 <div className={styles.productPriceContainer}>
                   <p className={styles.priceText}>Price each: </p>
-                  <p className={styles.priceNumber}>{item.price}$ USD</p>
+                  <p className={styles.priceNumber}>
+                    {priceConversion(item)} {currencyType}
+                  </p>
                 </div>
                 <div className={styles.productPriceContainer}>
                   <p className={styles.priceText}>Price total: </p>
                   <p className={styles.priceNumber}>
-                    {productTotalPrice(item)}$ USD
+                    {productTotalPrice(item)} {currencyType}
                   </p>
                 </div>
               </div>
@@ -108,8 +129,26 @@ const Cart = () => {
         {/* Total Price */}
         <div className={styles.totalPriceContainer}>
           <h2 className={styles.totalPriceHeader}>Total Price:</h2>
-          <h2 className={styles.totalPriceHeader}>{totalPrice}$ USD</h2>
+          <h2 className={styles.totalPriceHeader}>
+            {totalPrice}
+            {/* Currency Converter */}
+            <div>
+              <select
+                name="currencyType"
+                id="currencyType"
+                onChange={(e) => setCurrencyType(e.target.value)}
+              >
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="NOK">NOK</option>
+                <option value="SEK">SEK</option>
+                <option value="DKK">DKK</option>
+                <option value="JPY">JPY</option>
+              </select>
+            </div>
+          </h2>
         </div>
+
         <Button className={styles.checkoutButton} onClick={handleCheckout}>
           To Checkout
         </Button>
