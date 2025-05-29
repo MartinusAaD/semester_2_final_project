@@ -149,6 +149,15 @@
 }
 
 .price {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.currencyConverterSelect {
+  background-color: var(--secondary-color);
+  cursor: pointer;
+  margin-left: var(--spacing-small);
 }
 
 .count {

@@ -8,14 +8,13 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import countReducer from "../../reducers/countReducer";
 import { useMemo, useReducer, useState } from "react";
 import useCurrencyConverter from "../../hooks/useCurrencyCoverter";
+import CurrencyConverter from "../../Components/currencyConverter/CurrencyConverter";
 
 const Cart = () => {
   const { cart, dispatch } = getCartContext();
   const { user } = getAuthContext();
   const navigate = useNavigate();
   const [currencyType, setCurrencyType] = useState("USD");
-
-  const [count, countDispatch] = useReducer(countReducer, 1);
 
   const { rates } = useCurrencyConverter();
 
@@ -132,20 +131,7 @@ const Cart = () => {
           <h2 className={styles.totalPriceHeader}>
             {totalPrice}
             {/* Currency Converter */}
-            <div>
-              <select
-                name="currencyType"
-                id="currencyType"
-                onChange={(e) => setCurrencyType(e.target.value)}
-              >
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
-                <option value="NOK">NOK</option>
-                <option value="SEK">SEK</option>
-                <option value="DKK">DKK</option>
-                <option value="JPY">JPY</option>
-              </select>
-            </div>
+            <CurrencyConverter setCurrencyType={setCurrencyType} selectStyles={styles.currencyConverterSelect} />
           </h2>
         </div>
 

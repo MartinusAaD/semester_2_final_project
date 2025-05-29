@@ -168,6 +168,10 @@
   gap: 1rem;
 }
 
+.currencyConverterSelect {
+  cursor: pointer;
+}
+
 /* ------------------ */
 
 .checkoutButton {

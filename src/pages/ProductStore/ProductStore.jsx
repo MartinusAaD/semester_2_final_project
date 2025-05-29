@@ -9,6 +9,8 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../Components/Button/Button";
 import { getProductsContext } from "../../context/productsContext";
 import { getCartContext } from "../../context/cartContext";
+import CurrencyConverter from "../../Components/currencyConverter/CurrencyConverter";
+import useCurrencyConverter from "../../hooks/useCurrencyCoverter";
 
 const ProductStore = () => {
   const { products } = getProductsContext();
@@ -21,6 +23,9 @@ const ProductStore = () => {
 
   const [count, countDispatch] = useReducer(countReducer, 1);
   const { cart, dispatch } = getCartContext();
+
+  const [currencyType, setCurrencyType] = useState("USD");
+  const { rates } = useCurrencyConverter();
 
   const navigate = useNavigate();
 
@@ -124,6 +129,13 @@ const ProductStore = () => {
 
     // Remove quantity from product
     // Add quantity of product to cart
+  };
+
+  const convertPrice = (itemPrice) => {
+    if (!rates || !currencyType || !rates[currencyType]) return "0.00"; // Got help with this line from chatGPT, rates had not rendered fast enough, site crashed.
+
+    const basePrice = itemPrice * rates[currencyType];
+    return basePrice.toFixed(2);
   };
 
   return (
@@ -259,7 +271,7 @@ const ProductStore = () => {
           <div className={styles.purchaseContainer}>
             <div className={styles.quantityPriceContainer}>
               {/* Quantity */}
-              <p className={styles.price}>
+              <p className={styles.quantity}>
                 {/* && Object.keys(productInFocus).length > 0 suggested by ChatGPT */}
                 {productInFocus && Object.keys(productInFocus).length > 0
                   ? `${productInFocus.quantity ?? 0} Products Left In Store`
@@ -268,8 +280,10 @@ const ProductStore = () => {
 
               {/* Price */}
               <p className={styles.price}>
-                {productInFocus?.price ? productInFocus?.price : (0).toFixed(2)}{" "}
-                $ USD
+                {productInFocus?.price
+                  ? convertPrice(productInFocus.price)
+                  : (0).toFixed(2)}{" "}
+                <CurrencyConverter setCurrencyType={setCurrencyType} selectStyles={styles.currencyConverterSelect}/>
               </p>
             </div>
 
