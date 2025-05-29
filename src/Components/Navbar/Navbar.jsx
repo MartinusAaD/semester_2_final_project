@@ -63,7 +63,7 @@ const Navbar = () => {
         <div
           className={`${styles.navbar__linksContainer} ${styles.navbar__linksButtonsContainer}`}
         >
-          <NavLink to="/basket" className={styles.navbar__linksButton}>
+          <NavLink to="/cart" className={styles.navbar__linksButton}>
             <FontAwesomeIcon icon={faCartShopping} />
           </NavLink>
 

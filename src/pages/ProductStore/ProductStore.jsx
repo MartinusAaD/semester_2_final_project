@@ -269,7 +269,7 @@ const ProductStore = () => {
               {/* Price */}
               <p className={styles.price}>
                 {productInFocus?.price ? productInFocus?.price : (0).toFixed(2)}{" "}
-                $
+                $ USD
               </p>
             </div>
 
