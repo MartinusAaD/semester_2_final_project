@@ -12,7 +12,7 @@ import Home from "../pages/Home/Home";
 import ProductInfo from "../pages/ProductInfo/ProductInfo";
 import ProductStore from "../pages/ProductStore/ProductStore";
 import Contact from "../pages/Contact/Contact";
-import Basket from "../pages/Basket/Basket";
+import Cart from "../pages/Cart/Cart";
 import SignIn from "../pages/SignIn/SignIn";
 import SignUp from "../pages/SignUp/SignUp";
 import MyProfile from "../pages/MyProfile/MyProfile";
@@ -72,7 +72,7 @@ export const router = createBrowserRouter(
           </Route>
         </Route>
         <Route path="/contact" element={<Contact />} />
-        <Route path="/basket" element={<Basket />} />
+        <Route path="/cart" element={<Cart />} />
 
         <Route
           path="/sign-in"

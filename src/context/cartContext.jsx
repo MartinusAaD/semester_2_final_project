@@ -16,16 +16,17 @@ const getCartToken = () => {
 const cartReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_CART":
-      const existingItem = state.find((item) => item.id === action.payload.id);
+      const { product, cartQuantity } = action.payload;
+      const existingItem = state.find((item) => item.id === product.id);
 
       if (existingItem) {
         return state.map((item) =>
-          item.id === action.payload.id
-            ? { ...item, quantity: itemm.quantity + 1 }
+          item.id === product.id
+            ? { ...item, cartQuantity: item.cartQuantity + cartQuantity }
             : item
         );
       }
-      return [...state, { ...action.payload, quantity: 1 }];
+      return [...state, { ...product, cartQuantity }];
 
     case "REMOVE_FROM_CART":
       return state.filter((item) => item.id !== action.payload);
@@ -36,14 +37,14 @@ const cartReducer = (state, action) => {
     case "INCREASE_QUANTITY":
       return state.map((item) =>
         item.id === action.payload
-          ? { ...item, quantity: item.quantity + 1 }
+          ? { ...item, cartQuantity: item.cartQuantity + 1 }
           : item
       );
 
     case "DECREASE_QUANTITY":
       return state.map((item) =>
         item.id === action.payload
-          ? { ...item, quantity: Math.max(1, item.quantity - 1) }
+          ? { ...item, cartQuantity: Math.max(1, item.cartQuantity - 1) }
           : item
       );
 
@@ -58,12 +59,14 @@ const cartReducer = (state, action) => {
 // The cart
 export const CartProvider = ({ children }) => {
   const cartKey = getCartToken();
-  const [cart, dispatch] = useReducer(cartReducer, []);
 
-  useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem(cartKey)) || [];
-    dispatch({ type: "UPDATE_CART", payload: storedCart });
-  }, [cartKey]);
+  // Solution suggested by chatGpt as the method with useEffect we used in class didn't seem to work here,
+  // It would set the cart in local storage as empty before retrieving the data...
+  const [cart, dispatch] = useReducer(cartReducer, [], () => {
+    const storedCart = JSON.parse(localStorage.getItem(cartKey));
+    return storedCart || [];
+  });
+  //--------------------------------------------------------------------------------------
 
   useEffect(() => {
     localStorage.setItem(cartKey, JSON.stringify(cart));

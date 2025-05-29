@@ -1,0 +1,11 @@
+.cartWrapper {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 6rem;
+  padding-bottom: 3rem;
+  display: flex;
+  justify-content: center;
+
+  background-image: url("/images/background-image.png");
+  background-size: cover;
+}

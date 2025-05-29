@@ -162,6 +162,9 @@ const Profile = () => {
                 </div>
               )}
             </div>
+            <h2 className={styles.welcomeHeader}>
+              Welcome to your profile, {userData?.firstname}!
+            </h2>
             <div className={styles.profileDetailsListContainer}>
               <div className={styles.profileDetailsList}>
                 <div className={styles.inputContainer}>
@@ -210,7 +213,7 @@ const Profile = () => {
                 <div className={styles.inputContainer}>
                   <label
                     htmlFor="email"
-                    title="Emails must use a similar format 'john.doe@email.com'"
+                    title="The email connected to your account"
                   >
                     Email:
                   </label>
@@ -222,7 +225,7 @@ const Profile = () => {
                     disabled
                     value={userData?.email}
                     onChange={handleChange}
-                    title="Emails must use a similar format 'john.doe@email.com'"
+                    title="The email connected to your account"
                   />
                   <p className={styles.validationErrorMessage}>
                     {validationErrors.email}
@@ -233,7 +236,7 @@ const Profile = () => {
                     htmlFor="phoneNumber"
                     title="Phone numbers consists only of numbers"
                   >
-                    Phone Number:
+                    Phone Number: *
                   </label>
                   <input
                     type="tel"
@@ -254,7 +257,7 @@ const Profile = () => {
                     htmlFor="address"
                     title="The address consists only of letters, numbers and spaces. No symbols or special characters allowed"
                   >
-                    Address:
+                    Address: *
                   </label>
                   <input
                     type="text"
@@ -275,7 +278,7 @@ const Profile = () => {
                     htmlFor="postalCode"
                     title='The postal code consists only of numbers. For example "0123"'
                   >
-                    Postal code:
+                    Postal code: *
                   </label>
                   <input
                     type="text"

@@ -55,7 +55,7 @@ select {
   align-items: center;
   border: none;
   border-radius: var(--border-radius-xs);
-  font-family: inherit;
+  
 }
 
 textarea {

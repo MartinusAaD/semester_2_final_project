@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../Components/Button/Button";
 import { getProductsContext } from "../../context/productsContext";
+import { getCartContext } from "../../context/cartContext";
 
 const ProductStore = () => {
   const { products } = getProductsContext();
@@ -18,7 +19,8 @@ const ProductStore = () => {
   );
   const [productInFocus, setProductInFocus] = useState(null);
 
-  const [count, dispatch] = useReducer(countReducer, 1);
+  const [count, countDispatch] = useReducer(countReducer, 1);
+  const { cart, dispatch } = getCartContext();
 
   const navigate = useNavigate();
 
@@ -27,7 +29,7 @@ const ProductStore = () => {
 
   // Reset counter to default on product change
   useEffect(() => {
-    dispatch({ type: "RESET", payload: 0 });
+    countDispatch({ type: "RESET", payload: 0 });
   }, [productInFocus]);
 
   const setActiveClass = ({ isActive }) =>
@@ -109,8 +111,17 @@ const ProductStore = () => {
     setProductInFocus(item);
   };
 
-  const handleAddToCart = () => {
-    dispatch({ type: "RESET", payload: 0 });
+  const handleAddToCart = async () => {
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: {
+        product: productInFocus,
+        cartQuantity: count,
+      },
+    });
+
+    countDispatch({ type: "RESET", payload: 0 });
+
     // Remove quantity from product
     // Add quantity of product to cart
   };
@@ -266,7 +277,9 @@ const ProductStore = () => {
             <div className={styles.addToCartContainer}>
               <div className={styles.purchaseAmountContainer}>
                 <Button
-                  onClick={() => dispatch({ type: "DECREMENT", payload: 1 })}
+                  onClick={() =>
+                    countDispatch({ type: "DECREMENT", payload: 1 })
+                  }
                   className={styles.amountButtons}
                 >
                   -
@@ -274,7 +287,9 @@ const ProductStore = () => {
 
                 <p className={styles.count}>{count}</p>
                 <Button
-                  onClick={() => dispatch({ type: "INCREMENT", payload: 1 })}
+                  onClick={() =>
+                    countDispatch({ type: "INCREMENT", payload: 1 })
+                  }
                   className={styles.amountButtons}
                 >
                   +
