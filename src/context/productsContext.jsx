@@ -21,8 +21,6 @@ export const ProductsProvider = ({ children }) => {
           ...doc.data(),
         }));
 
-        console.log(productsList);
-
         setProducts(productsList);
       } catch (error) {
         console.log(error.message);

@@ -314,7 +314,7 @@ const Profile = () => {
                     title="Shows the status of the accounts verification."
                   />
                   <p className={styles.validationErrorMessage}></p>
-                  {/* Resend verification */}
+                  {/* Resend verification  insert if time*/}
                 </div>
                 <div className={styles.inputContainer}>
                   <label

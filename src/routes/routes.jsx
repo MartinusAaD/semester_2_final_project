@@ -73,6 +73,7 @@ export const router = createBrowserRouter(
         </Route>
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
 
         <Route
           path="/sign-in"
@@ -82,6 +83,7 @@ export const router = createBrowserRouter(
             </PublicRoutesGuard>
           }
         />
+
         <Route
           path="/sign-up"
           element={
@@ -90,6 +92,7 @@ export const router = createBrowserRouter(
             </PublicRoutesGuard>
           }
         />
+
         <Route path="*" element={<PageNotFound />} />
 
         {/* Private Routes */}
@@ -111,15 +114,6 @@ export const router = createBrowserRouter(
         >
           <Route path="orders" element={<MyProfile />} />
         </Route>
-
-        <Route
-          path="/checkout"
-          element={
-            <PrivateRoutesGuard>
-              <Checkout />
-            </PrivateRoutesGuard>
-          }
-        />
       </Route>
     </>
   )

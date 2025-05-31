@@ -15,15 +15,16 @@ const CheckoutModal = ({ setShowCheckoutModal }) => {
           <FontAwesomeIcon icon={faX} />
         </Button>
         <p className={styles.paragraph}>
-          Sign up to create an account to keep all your orders in one place!
+          Sign in or sign up to create an account to keep all your orders in one
+          place!
         </p>
         <div className={styles.linksButtonContainer}>
           <Link
-            to="/checkout"
+            to="/sign-in"
             className={styles.linkButton}
             onClick={() => setShowCheckoutModal(false)}
           >
-            Continue as guest
+            Sign In!
           </Link>
           <Link
             to="/sign-up"
