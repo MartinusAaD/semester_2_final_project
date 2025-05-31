@@ -5,18 +5,20 @@ import { getCartContext } from "../../context/cartContext";
 import styles from "./Cart.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import countReducer from "../../reducers/countReducer";
-import { useMemo, useReducer, useState } from "react";
-import useCurrencyConverter from "../../hooks/useCurrencyCoverter";
+import { useMemo, useState } from "react";
+import useCurrencyConverter from "../../hooks/useCurrencyConverter";
 import CurrencyConverter from "../../Components/currencyConverter/CurrencyConverter";
+import CheckoutModal from "../../Components/CheckoutModal/CheckoutModal";
 
 const Cart = () => {
   const { cart, dispatch } = getCartContext();
   const { user } = getAuthContext();
-  const navigate = useNavigate();
   const [currencyType, setCurrencyType] = useState("USD");
-
   const { rates } = useCurrencyConverter();
+
+  const [showCheckoutModal, setShowCheckoutModal] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleIncreaseAmount = (item) => {
     dispatch({ type: "INCREASE_QUANTITY", payload: item.id });
@@ -37,8 +39,9 @@ const Cart = () => {
   const handleCheckout = () => {
     if (user) {
       navigate("/checkout");
+      setShowCheckoutModal(false);
     } else {
-      // modal for continue as guest, or sign in for order history.
+      setShowCheckoutModal(true);
     }
   };
 
@@ -131,7 +134,10 @@ const Cart = () => {
           <h2 className={styles.totalPriceHeader}>
             {totalPrice}
             {/* Currency Converter */}
-            <CurrencyConverter setCurrencyType={setCurrencyType} selectStyles={styles.currencyConverterSelect} />
+            <CurrencyConverter
+              setCurrencyType={setCurrencyType}
+              selectStyles={styles.currencyConverterSelect}
+            />
           </h2>
         </div>
 
@@ -139,6 +145,11 @@ const Cart = () => {
           To Checkout
         </Button>
       </div>
+
+      {/* Open Checkout Modal if user is not logged in */}
+      {showCheckoutModal && (
+        <CheckoutModal setShowCheckoutModal={setShowCheckoutModal} />
+      )}
     </div>
   );
 };

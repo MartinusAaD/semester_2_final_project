@@ -10,7 +10,7 @@ import Button from "../../Components/Button/Button";
 import { getProductsContext } from "../../context/productsContext";
 import { getCartContext } from "../../context/cartContext";
 import CurrencyConverter from "../../Components/currencyConverter/CurrencyConverter";
-import useCurrencyConverter from "../../hooks/useCurrencyCoverter";
+import useCurrencyConverter from "../../hooks/useCurrencyConverter";
 
 const ProductStore = () => {
   const { products } = getProductsContext();
@@ -283,7 +283,10 @@ const ProductStore = () => {
                 {productInFocus?.price
                   ? convertPrice(productInFocus.price)
                   : (0).toFixed(2)}{" "}
-                <CurrencyConverter setCurrencyType={setCurrencyType} selectStyles={styles.currencyConverterSelect}/>
+                <CurrencyConverter
+                  setCurrencyType={setCurrencyType}
+                  selectStyles={styles.currencyConverterSelect}
+                />
               </p>
             </div>
 
@@ -321,6 +324,8 @@ const ProductStore = () => {
           </div>
         </div>
       </div>
+
+      {}
     </div>
   );
 };
