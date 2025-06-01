@@ -23,6 +23,7 @@ import ProductsShowcase from "../pages/ProductInfo/ProductsShowcase";
 import PageNotFound from "../pages//PageNotFound/PageNotFound";
 import VerifyEmail from "../pages/VerifyEmail/VerifyEmail";
 import Checkout from "../pages/Checkout/Checkout";
+import OrderComplete from "../pages/OrderComplete/OrderComplete";
 
 // -----------------------------------------------------------------------
 
@@ -73,7 +74,6 @@ export const router = createBrowserRouter(
         </Route>
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<Checkout />} />
 
         <Route
           path="/sign-in"
@@ -114,6 +114,23 @@ export const router = createBrowserRouter(
         >
           <Route path="orders" element={<MyProfile />} />
         </Route>
+
+        <Route
+          path="/checkout"
+          element={
+            <PrivateRoutesGuard>
+              <Checkout />
+            </PrivateRoutesGuard>
+          }
+        />
+        <Route
+          path="/order-complete"
+          element={
+            <PrivateRoutesGuard>
+              <OrderComplete />
+            </PrivateRoutesGuard>
+          }
+        />
       </Route>
     </>
   )

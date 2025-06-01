@@ -1,14 +1,22 @@
 import { useEffect, useState } from "react";
 import styles from "./Checkout.module.css";
 import Button from "../../Components/Button/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getAuthContext } from "../../context/authContext";
-import { doc, getDoc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  serverTimestamp,
+} from "firebase/firestore";
 import { database } from "../../firestoreConfig";
 import { useCheckoutValidation } from "../../hooks/useCheckoutValidation";
+import { getCartContext } from "../../context/cartContext";
 
 const Checkout = () => {
   const [showShippingInformation, setShowShippingInformation] = useState(true);
+  const [feedbackMessage, setFeedbackMessage] = useState("");
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -16,12 +24,6 @@ const Checkout = () => {
     postalCode: "",
     email: "",
     phoneNumber: "",
-    shippingFirstname: "",
-    shippingLastname: "",
-    shippingAddress: "",
-    shippingPostalCode: "",
-    shippingEmail: "",
-    shippingPhoneNumber: "",
     cardName: "",
     cardNumber: "",
     cardExpiryMonth: "",
@@ -29,9 +31,20 @@ const Checkout = () => {
     cardCvc: "",
   });
 
+  const [formDataShipping, setFormDataShipping] = useState({
+    shippingFirstname: "",
+    shippingLastname: "",
+    shippingAddress: "",
+    shippingPostalCode: "",
+    shippingEmail: "",
+    shippingPhoneNumber: "",
+  });
+
+  const { cart, dispatch } = getCartContext();
   const { user } = getAuthContext();
   const { validationErrors, setValidationErrors, validate } =
     useCheckoutValidation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -55,6 +68,8 @@ const Checkout = () => {
         }
       } catch (error) {
         console.log(error.message);
+        // I decided not to give any visual feedback here, as it could confuse the user,
+        // if they are not expecting the info to be automatically inserted based on their account
       }
     };
     fetchUserData();
@@ -75,15 +90,56 @@ const Checkout = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormDataShipping((prev) => ({ ...prev, [name]: value }));
     setValidationErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
-  const handleSubmit = (e) => {
+  const handleChangeShipping = (e) => {
+    const { name, value } = e.target;
+    setFormDataShipping((prev) => ({ ...prev, [name]: value }));
+    setValidationErrors((prev) => ({ ...prev, [name]: "" }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (validate(formData).length > 0) {
-      console.log("Form is not valid!");
+    if (!showShippingInformation) {
+      setFormDataShipping({
+        shippingFirstname: formData.firstname,
+        shippingLastname: formData.lastname,
+        shippingAddress: formData.address,
+        shippingPostalCode: formData.postalCode,
+        shippingEmail: formData.email,
+        shippingPhoneNumber: formData.phoneNumber,
+      });
+    }
+
+    if (validate(formData, showShippingInformation).length > 0) {
       return;
+    } else if (showShippingInformation) {
+      if (validate(formDataShipping, showShippingInformation).length > 0) {
+        return;
+      }
+    }
+
+    try {
+      await addDoc(collection(database, "orders"), {
+        userId: user.uid,
+        orderInfo: formData,
+        shippingInfo: formDataShipping,
+        orderProducts: cart,
+        createdAt: serverTimestamp(),
+      });
+
+      dispatch({ type: "CLEAR_CART" });
+      setFeedbackMessage("Your order has been received!");
+      navigate("/order-complete");
+    } catch (error) {
+      console.log(error.message);
+      setFeedbackMessage(
+        "There was an error placing your order",
+        error.message
+      );
     }
   };
 
@@ -96,6 +152,7 @@ const Checkout = () => {
           noValidate
           onSubmit={handleSubmit}
         >
+          {/* Personal Information */}
           <fieldset className={styles.formFieldset}>
             <legend className={styles.formLegend}>Personal Information</legend>
             <div className={styles.groupContainer}>
@@ -207,7 +264,7 @@ const Checkout = () => {
               onChange={(e) => setShowShippingInformation(!e.target.checked)}
             />
             <label htmlFor="checkbox">
-              Check if shipping is same as above.
+              Check if shipping is the same as above.
             </label>
           </div>
 
@@ -230,8 +287,8 @@ const Checkout = () => {
                   id="shippingFirstname"
                   placeholder="Enter your First name"
                   title="Enter your First name"
-                  onChange={handleChange}
-                  value={formData.shippingFirstname}
+                  onChange={handleChangeShipping}
+                  value={formDataShipping.shippingFirstname}
                 />
                 <p className={styles.errorMessage}>
                   {validationErrors.shippingFirstname}
@@ -248,8 +305,8 @@ const Checkout = () => {
                   id="shippingLastname"
                   placeholder="Enter your Last name"
                   title="Enter your Last name"
-                  onChange={handleChange}
-                  value={formData.shippingLastname}
+                  onChange={handleChangeShipping}
+                  value={formDataShipping.shippingLastname}
                 />
                 <p className={styles.errorMessage}>
                   {validationErrors.shippingLastname}
@@ -266,8 +323,8 @@ const Checkout = () => {
                   id="shippingAddress"
                   placeholder="Enter your Address"
                   title="Enter your Address"
-                  onChange={handleChange}
-                  value={formData.shippingAddress}
+                  onChange={handleChangeShipping}
+                  value={formDataShipping.shippingAddress}
                 />
                 <p className={styles.errorMessage}>
                   {validationErrors.shippingAddress}
@@ -287,8 +344,8 @@ const Checkout = () => {
                   id="shippingPostalCode"
                   placeholder="Enter your Postal Code"
                   title="Enter your Postal Code"
-                  onChange={handleChange}
-                  value={formData.shippingPostalCode}
+                  onChange={handleChangeShipping}
+                  value={formDataShipping.shippingPostalCode}
                 />
                 <p className={styles.errorMessage}>
                   {validationErrors.shippingPostalCode}
@@ -305,8 +362,8 @@ const Checkout = () => {
                   id="shippingEmail"
                   placeholder="Enter your email"
                   title="Enter your email"
-                  onChange={handleChange}
-                  value={formData.shippingEmail}
+                  onChange={handleChangeShipping}
+                  value={formDataShipping.shippingEmail}
                 />
                 <p className={styles.errorMessage}>
                   {validationErrors.shippingEmail}
@@ -326,8 +383,8 @@ const Checkout = () => {
                   id="shippingPhoneNumber"
                   placeholder="Enter your ShippingPhone Number"
                   title="Enter your ShippingPhone Number"
-                  onChange={handleChange}
-                  value={formData.shippingPhoneNumber}
+                  onChange={handleChangeShipping}
+                  value={formDataShipping.shippingPhoneNumber}
                 />
                 <p className={styles.errorMessage}>
                   {validationErrors.shippingPhoneNumber}
@@ -336,6 +393,7 @@ const Checkout = () => {
             </fieldset>
           )}
 
+          {/* Payment Information */}
           <fieldset className={styles.formFieldset}>
             <legend className={styles.formLegend}>Payment Information</legend>
 
@@ -426,13 +484,13 @@ const Checkout = () => {
             </div>
 
             <div className={styles.groupContainer}>
-              <label htmlFor="cvc" title="Enter your cards cvc number">
+              <label htmlFor="cardCvc" title="Enter your cards cvc number">
                 CVC: *
               </label>
               <input
                 type="text"
-                name="cvc"
-                id="cvc"
+                name="cardCvc"
+                id="cardCvc"
                 placeholder="000"
                 title="Enter your cards cvc number"
                 onChange={handleChange}
@@ -442,7 +500,7 @@ const Checkout = () => {
             <p className={styles.errorMessage}>{validationErrors.cardCvc}</p>
           </fieldset>
 
-          <p className={styles.feedbackMessage}></p>
+          <p className={styles.feedbackMessage}>{feedbackMessage}</p>
 
           <div className={styles.buttonsContainer}>
             <Button className={styles.buttonLink}>Order</Button>
