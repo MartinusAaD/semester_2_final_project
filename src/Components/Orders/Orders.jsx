@@ -91,12 +91,14 @@ const Orders = () => {
             <li
               className={`${styles.productListItem} ${styles.listItemProducts}`}
             >
-              {order.orderProducts.map((product) => (
-                <div className={styles.productsContainer} key={product.id}>
-                  <p>{product.name}</p>
-                  <p>x{product.cartQuantity}</p>
-                </div>
-              ))}
+              {order.orderProducts
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .map((product) => (
+                  <div className={styles.productsContainer} key={product.id}>
+                    <p>{product.name}</p>
+                    <p>x{product.cartQuantity}</p>
+                  </div>
+                ))}
             </li>
             <li className={`${styles.productListItem} ${styles.listItemPrice}`}>
               {order.priceDetails.totalPrice} {order.priceDetails.currencyType}

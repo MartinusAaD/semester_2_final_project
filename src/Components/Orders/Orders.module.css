@@ -80,4 +80,5 @@
   display: flex;
   justify-content: space-between;
   gap: var(--spacing-small);
+  padding: 4px 0;
 }
