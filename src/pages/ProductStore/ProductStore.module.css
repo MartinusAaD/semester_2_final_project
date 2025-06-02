@@ -32,6 +32,11 @@
   box-shadow: 0 0 20px 1px black;
 }
 
+.outOfStockImage {
+  filter: grayscale(100%);
+  opacity: 0.6;
+}
+
 .productCategoryContainer {
   flex: 1;
   display: flex;

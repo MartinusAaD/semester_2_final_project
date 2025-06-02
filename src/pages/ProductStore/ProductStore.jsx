@@ -235,6 +235,9 @@ const ProductStore = () => {
                           <img
                             src={item.imageUrl}
                             alt={`Image of ${item.name}`}
+                            className={
+                              item.quantity !== 0 ? "" : styles.outOfStockImage
+                            }
                             //onError code by ChatGpt
                             onError={(e) => {
                               e.target.onerror = null; // prevent infinite loop
@@ -315,8 +318,11 @@ const ProductStore = () => {
               <Button
                 onClick={handleAddToCart}
                 className={styles.addToCartButton}
+                disabled={productInFocus?.quantity === 0}
               >
-                Add to Cart{" "}
+                {productInFocus?.quantity !== 0
+                  ? "Add to Cart"
+                  : "Out of Stock"}{" "}
                 <FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon>
               </Button>
             </div>
