@@ -4,7 +4,13 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth, database } from "../../firestoreConfig.js";
-import { doc, serverTimestamp, setDoc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  serverTimestamp,
+  setDoc,
+} from "firebase/firestore";
 import { useAuth } from "../../hooks/useAuth.js";
 
 // Form usage explained at bottom
@@ -131,6 +137,22 @@ const Form = ({
     // Checks validation
     if (!isFormValid) {
       return;
+    }
+
+    // For Contact purposes
+    if (typeOfForm === "contact") {
+      try {
+        await addDoc(collection(database, "contactMessages"), {
+          inputData,
+          createdAt: serverTimestamp(),
+        });
+        setSubmitMessage("Message has been sent successfully!");
+      } catch (error) {
+        setSubmitMessages(
+          "There was an error sending your message, try again",
+          error.message
+        );
+      }
     }
 
     // For Sign-up purposes
@@ -318,7 +340,7 @@ const Form = ({
           );
         })}
       </fieldset>
-      <p>{submitMessage}</p>
+      <p className={styles.submitMessage}>{submitMessage}</p>
       <div>
         <Button className={buttonStyle}>{submitButtonText}</Button>
       </div>

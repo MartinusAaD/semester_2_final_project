@@ -29,11 +29,9 @@ label {
   align-items: center;
   gap: var(--spacing-medium);
 
-  border: 1px solid var(--font-color-light);;
+  border: 1px solid var(--font-color-light);
   border-radius: var(--border-radius-small);
   padding: var(--spacing-medium);
-
-  
 }
 
 .legend {
@@ -55,7 +53,6 @@ select {
   align-items: center;
   border: none;
   border-radius: var(--border-radius-xs);
-  
 }
 
 textarea {
@@ -72,6 +69,10 @@ textarea {
   gap: var(--spacing-large);
 }
 
-.errorMessages{
+.errorMessages {
   height: var(--font-size-base);
+}
+
+.submitMessage {
+  color: var(--font-color-light) !important;
 }

@@ -6,3 +6,5 @@
 
 
 I was unsure wether to use a context or hook for the product retrieval... context might be too heave on the site considering the amount of products?
+
+Write about the plus and minus of the form thingy

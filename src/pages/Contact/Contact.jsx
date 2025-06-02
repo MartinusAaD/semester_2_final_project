@@ -71,6 +71,7 @@ const Contact = () => {
             submitButtonText={"Send Message"}
             legendText={"Contact Information"}
             buttonStyle={styles.submitButton}
+            typeOfForm={"contact"}
           />
         </div>
       </div>
