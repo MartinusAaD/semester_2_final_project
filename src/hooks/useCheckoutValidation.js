@@ -7,8 +7,6 @@ export const useCheckoutValidation = () => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const addressRegex = /^[A-Za-zÆØÅæøå0-9\s\-,.]{1,100}$/;
   const postalCodeRegex = /^\d{4}$/;
-  const cardNumberRegex = /^\d{16}$/;
-  const cardCvcRegex = /^\d{3}$/;
 
   const validate = (values, validate) => {
     let newErrors = {};
@@ -117,8 +115,8 @@ export const useCheckoutValidation = () => {
     // Card Number
     if (!values.cardNumber?.trim()) {
       newErrors.cardNumber = "Card Number is required!";
-    } else if (!cardNumberRegex.test(values.cardNumber)) {
-      newErrors.CardNumber = "Card number must be 16 digits, numbers only";
+    } else if (values.cardNumber?.trim().length !== 16) {
+      newErrors.cardNumber = "Card number must be 16 digits, numbers only";
     }
 
     // Expiry Date
@@ -135,8 +133,8 @@ export const useCheckoutValidation = () => {
     // Cvc
     if (!values.cardCvc?.trim()) {
       newErrors.cardCvc = "Cvc is required!";
-    } else if (!cardCvcRegex.test(values.cardCvc)) {
-      newErrors.CardCvc = "Card cvc must be 3 digits, numbers only";
+    } else if (values.cardCvc?.trim().length !== 3) {
+      newErrors.cardCvc = "Card cvc must be 3 digits, numbers only";
     }
 
     setValidationErrors(newErrors);

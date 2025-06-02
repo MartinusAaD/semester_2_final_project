@@ -1,4 +1,11 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useReducer,
+  useState,
+} from "react";
 
 const cartContext = createContext();
 
@@ -59,6 +66,7 @@ const cartReducer = (state, action) => {
 // The cart
 export const CartProvider = ({ children }) => {
   const cartKey = getCartToken();
+  const [currencyType, setCurrencyType] = useState("USD");
 
   // Solution suggested by chatGpt as the method with useEffect we used in class didn't seem to work here,
   // It would set the cart in local storage as empty before retrieving the data...
@@ -72,8 +80,19 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem(cartKey, JSON.stringify(cart));
   }, [cartKey, cart]);
 
+  const totalPrice = useMemo(() => {
+    const cartPrice = cart.reduce(
+      (total, item) => total + item.price * item.cartQuantity,
+      0
+    );
+
+    return cartPrice.toFixed(2);
+  }, [cart]);
+
   return (
-    <cartContext.Provider value={{ dispatch, cart }}>
+    <cartContext.Provider
+      value={{ dispatch, cart, totalPrice, currencyType, setCurrencyType }}
+    >
       {children}
     </cartContext.Provider>
   );

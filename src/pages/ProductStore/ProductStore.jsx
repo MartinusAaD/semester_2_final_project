@@ -22,9 +22,8 @@ const ProductStore = () => {
   const [productInFocus, setProductInFocus] = useState(null);
 
   const [count, countDispatch] = useReducer(countReducer, 1);
-  const { cart, dispatch } = getCartContext();
+  const { cart, dispatch, currencyType, setCurrencyType } = getCartContext();
 
-  const [currencyType, setCurrencyType] = useState("USD");
   const { rates } = useCurrencyConverter();
 
   const navigate = useNavigate();

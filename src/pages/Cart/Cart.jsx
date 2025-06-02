@@ -11,9 +11,10 @@ import CurrencyConverter from "../../Components/currencyConverter/CurrencyConver
 import CheckoutModal from "../../Components/CheckoutModal/CheckoutModal";
 
 const Cart = () => {
-  const { cart, dispatch } = getCartContext();
+  const { cart, dispatch, totalPrice, currencyType, setCurrencyType } =
+    getCartContext();
   const { user } = getAuthContext();
-  const [currencyType, setCurrencyType] = useState("USD");
+
   const { rates } = useCurrencyConverter();
 
   const [showCheckoutModal, setShowCheckoutModal] = useState(false);
@@ -37,6 +38,11 @@ const Cart = () => {
   };
 
   const handleCheckout = () => {
+    if (cart.length === 0) {
+      console.log("cart is empty");
+      return;
+    }
+
     if (user) {
       navigate("/checkout");
       setShowCheckoutModal(false);
@@ -60,16 +66,12 @@ const Cart = () => {
     return convertedPrice.toFixed(2);
   };
 
-  const totalPrice = useMemo(() => {
+  const cartTotalPrice = useMemo(() => {
     if (!rates || !currencyType || !rates[currencyType]) return "0.00"; // Got help with this line from chatGPT, rates had not rendered fast enough, site crashed.
 
-    const cartPrice = cart.reduce(
-      (total, item) => total + item.price * item.cartQuantity,
-      0
-    );
-    const convertedCartPrice = cartPrice * rates[currencyType];
+    const convertedCartPrice = totalPrice * rates[currencyType];
     return convertedCartPrice.toFixed(2);
-  }, [cart, currencyType, rates]);
+  }, [totalPrice, currencyType, rates]);
 
   return (
     <div className={styles.cartWrapper}>
@@ -128,11 +130,12 @@ const Cart = () => {
             </section>
           ))}
         </div>
+
         {/* Total Price */}
         <div className={styles.totalPriceContainer}>
           <h2 className={styles.totalPriceHeader}>Total Price:</h2>
           <h2 className={styles.totalPriceHeader}>
-            {totalPrice}
+            {cartTotalPrice}
             {/* Currency Converter */}
             <CurrencyConverter
               setCurrencyType={setCurrencyType}
@@ -141,9 +144,12 @@ const Cart = () => {
           </h2>
         </div>
 
-        <Button className={styles.checkoutButton} onClick={handleCheckout}>
-          To Checkout
-        </Button>
+        {/* Hide Checkout button if cart is empty */}
+        {cart.length !== 0 && (
+          <Button className={styles.checkoutButton} onClick={handleCheckout}>
+            To Checkout
+          </Button>
+        )}
       </div>
 
       {/* Open Checkout Modal if user is not logged in */}

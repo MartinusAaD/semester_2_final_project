@@ -188,6 +188,11 @@
   transform: scale(0.95);
 }
 
+/* Orders */
+.ordersHeader {
+  color: var(--font-color-light);
+}
+
 @media screen and (max-width: 825px) {
   .myProfileContainer {
     width: 90%;

@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../Components/Button/Button";
 import { useMyProfileValidation } from "../../hooks/useMyProfileValidation";
+import Orders from "../../Components/Orders/Orders";
 
 const Profile = () => {
   const [userData, setUserData] = useState(null);
@@ -44,7 +45,6 @@ const Profile = () => {
   }, [user]);
 
   const location = useLocation();
-  console.log(location);
 
   const handleSignOut = async () => {
     await signOut(auth);
@@ -371,7 +371,10 @@ const Profile = () => {
         )}
 
         {location.pathname === "/my-profile/orders" && (
-          <div className={styles.ordersContainer}>Orders</div>
+          <>
+            <h1 className={styles.ordersHeader}>Your Order History</h1>{" "}
+            <Orders />
+          </>
         )}
       </div>
     </div>

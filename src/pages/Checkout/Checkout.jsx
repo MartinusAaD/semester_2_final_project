@@ -40,7 +40,7 @@ const Checkout = () => {
     shippingPhoneNumber: "",
   });
 
-  const { cart, dispatch } = getCartContext();
+  const { cart, dispatch, currencyType, totalPrice } = getCartContext();
   const { user } = getAuthContext();
   const { validationErrors, setValidationErrors, validate } =
     useCheckoutValidation();
@@ -128,6 +128,10 @@ const Checkout = () => {
         orderInfo: formData,
         shippingInfo: formDataShipping,
         orderProducts: cart,
+        priceDetails: {
+          totalPrice: totalPrice,
+          currencyType: currencyType,
+        },
         createdAt: serverTimestamp(),
       });
 
@@ -418,7 +422,7 @@ const Checkout = () => {
                 Card Number: *
               </label>
               <input
-                type="text"
+                type="number"
                 name="cardNumber"
                 id="cardNumber"
                 placeholder="0000 0000 0000 0000"
@@ -488,7 +492,7 @@ const Checkout = () => {
                 CVC: *
               </label>
               <input
-                type="text"
+                type="number"
                 name="cardCvc"
                 id="cardCvc"
                 placeholder="000"
