@@ -45,3 +45,15 @@
 .submitButton:active {
   transform: scale(0.9);
 }
+
+@media screen and (max-width: 1280px) {
+  .formContainer {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .formContainer {
+    width: 90%;
+  }
+}

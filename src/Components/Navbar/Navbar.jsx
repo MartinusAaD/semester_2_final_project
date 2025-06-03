@@ -67,15 +67,6 @@ const Navbar = () => {
           <NavLink to="/" className={setActiveClass}>
             Home
           </NavLink>
-          <NavLink to="/product-info" className={setActiveClass}>
-            Info
-          </NavLink>
-          <NavLink to="/product-store" className={setActiveClass}>
-            Store
-          </NavLink>
-          <NavLink to="/contact" className={setActiveClass}>
-            Contact
-          </NavLink>
 
           {/* Displays on smaller screens */}
           {showMenu && (
@@ -93,6 +84,17 @@ const Navbar = () => {
               )}
             </>
           )}
+          {/* ----------------------------------- */}
+
+          <NavLink to="/product-info" className={setActiveClass}>
+            Info
+          </NavLink>
+          <NavLink to="/product-store" className={setActiveClass}>
+            Store
+          </NavLink>
+          <NavLink to="/contact" className={setActiveClass}>
+            Contact
+          </NavLink>
         </div>
         <div
           className={`${styles.linksContainer} ${styles.linksButtonsContainer} ${styles.biggerScreensContainer}`}
