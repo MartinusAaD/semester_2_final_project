@@ -6,7 +6,7 @@
   background-color: var(--container-color-black);
   position: fixed;
   top: 4.5rem;
-  z-index: 1000;
+  z-index: 800;
 }
 
 .navbarContainer {

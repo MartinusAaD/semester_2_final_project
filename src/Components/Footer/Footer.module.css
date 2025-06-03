@@ -18,4 +18,5 @@
 
 .footer p {
   padding: var(--spacing-medium);
+  text-align: center;
 }

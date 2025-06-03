@@ -12,7 +12,7 @@
 
 .homeContainer {
   width: 60%;
-  height: 50%;
+  min-height: 50vh;
 
   display: flex;
   flex-direction: column;
@@ -24,15 +24,20 @@
   background-color: var(--container-color-black);
   color: var(--font-color-light);
   text-shadow: -2px 2px 10px black;
+
+  padding: var(--spacing-large);
 }
 
 .header {
-  font-size: 3rem;
+  font-size: 2.5rem;
+  text-align: center;
+  padding: 0 var(--spacing-medium);
 }
 
 .description {
   font-size: 1.5rem;
   font-weight: bold;
+  text-align: center;
 }
 
 .toStoreButton {
@@ -58,4 +63,18 @@
 
 .toStoreButton:active {
   transform: scale(0.95);
+}
+
+@media screen and (max-width: 768px) {
+  .homeContainer {
+    width: 80%;
+  }
+
+  .header {
+    font-size: var(--font-size-xl);
+  }
+
+  .description {
+    font-size: var(--font-size-base);
+  }
 }

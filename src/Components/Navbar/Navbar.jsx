@@ -5,11 +5,18 @@ import { auth } from "../../firestoreConfig";
 
 // Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping, faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faCartShopping,
+  faUser,
+  faX,
+} from "@fortawesome/free-solid-svg-icons";
 import { onAuthStateChanged } from "firebase/auth";
+import Button from "../Button/Button";
 
 const Navbar = () => {
   const setActiveClass = ({ isActive }) => (isActive ? styles.active : "");
+  const [showMenu, setShowMenu] = useState(false);
 
   // Checks if there is a user logged in
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -30,23 +37,33 @@ const Navbar = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.navbarContainer}>
-        <div className={styles.navbar__brandLogoContainer}>
-          <NavLink to="/" className={styles.navbar__brandLogoLink}>
+        <div className={styles.brandLogoContainer}>
+          <NavLink to="/" className={styles.brandLogoLink}>
             <img
               src="/icons/treeIcon-white.png"
               alt="image"
-              className={styles.navbar__icon}
+              className={styles.icon}
             />
-            <div className={styles.navbar__brandName}>
-              <p className={styles.navbar__brandNameWord}>The</p>
-              <p className={styles.navbar__brandNameWord}>Fruiting</p>
-              <p className={styles.navbar__brandNameWord}>Forest</p>
+            <div className={styles.brandName}>
+              <p className={styles.brandNameWord}>The</p>
+              <p className={styles.brandNameWord}>Fruiting</p>
+              <p className={styles.brandNameWord}>Forest</p>
             </div>
           </NavLink>
         </div>
         <div
-          className={`${styles.navbar__linksContainer} ${styles.navbar__linksTextContainer}`}
+          className={`${styles.linksContainer} ${styles.linksTextContainer} ${
+            showMenu ? styles.sidebarOpen : ""
+          } `}
         >
+          {showMenu && (
+            <Button
+              className={`${styles.menuExitButton}`}
+              onClick={() => setShowMenu(false)}
+            >
+              <FontAwesomeIcon icon={faX} />
+            </Button>
+          )}
           <NavLink to="/" className={setActiveClass}>
             Home
           </NavLink>
@@ -59,25 +76,56 @@ const Navbar = () => {
           <NavLink to="/contact" className={setActiveClass}>
             Contact
           </NavLink>
+
+          {/* Displays on smaller screens */}
+          {showMenu && (
+            <>
+              {!isLoggedIn && (
+                <NavLink to="/sign-in" className={setActiveClass}>
+                  Sign In
+                </NavLink>
+              )}
+
+              {isLoggedIn && (
+                <NavLink to="/my-profile" className={setActiveClass}>
+                  My Profile
+                </NavLink>
+              )}
+            </>
+          )}
         </div>
         <div
-          className={`${styles.navbar__linksContainer} ${styles.navbar__linksButtonsContainer}`}
+          className={`${styles.linksContainer} ${styles.linksButtonsContainer} ${styles.biggerScreensContainer}`}
         >
-          <NavLink to="/cart" className={styles.navbar__linksButton}>
+          <NavLink to="/cart" className={styles.linksButton}>
             <FontAwesomeIcon icon={faCartShopping} />
           </NavLink>
 
           {!isLoggedIn && (
-            <NavLink to="/sign-in" className={styles.navbar__linksButton}>
+            <NavLink to="/sign-in" className={styles.linksButton}>
               <FontAwesomeIcon icon={faUser} />
             </NavLink>
           )}
 
           {isLoggedIn && (
-            <NavLink to="/my-profile" className={styles.navbar__linksButton}>
+            <NavLink to="/my-profile" className={styles.linksButton}>
               <FontAwesomeIcon icon={faUser} />
             </NavLink>
           )}
+        </div>
+        <div
+          className={`${styles.linksContainer} ${styles.linksButtonsContainer} ${styles.smallerScreensContainer}`}
+        >
+          <NavLink to="/cart" className={styles.linksButton}>
+            <FontAwesomeIcon icon={faCartShopping} />
+          </NavLink>
+
+          <Button
+            className={styles.linksButton}
+            onClick={() => setShowMenu(true)}
+          >
+            <FontAwesomeIcon icon={faBars} />
+          </Button>
         </div>
       </div>
     </nav>
