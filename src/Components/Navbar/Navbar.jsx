@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styles from "./Navbar.module.css";
 import { auth } from "../../firestoreConfig";
@@ -17,6 +17,16 @@ import Button from "../Button/Button";
 const Navbar = () => {
   const setActiveClass = ({ isActive }) => (isActive ? styles.active : "");
   const [showMenu, setShowMenu] = useState(false);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const closeSidebar = () => {
+      setShowMenu(false);
+    };
+
+    closeSidebar();
+  }, [location]);
 
   // Checks if there is a user logged in
   const [isLoggedIn, setIsLoggedIn] = useState(false);
