@@ -59,6 +59,10 @@
   gap: var(--spacing-medium);
 }
 
+.productInfo p {
+  text-align: center;
+}
+
 .moreInfo {
   width: 100%;
   height: 20%;

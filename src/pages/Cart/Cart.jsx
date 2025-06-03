@@ -11,6 +11,7 @@ import CurrencyConverter from "../../Components/currencyConverter/CurrencyConver
 import CheckoutModal from "../../Components/CheckoutModal/CheckoutModal";
 
 const Cart = () => {
+  
   const { cart, dispatch, totalPrice, currencyType, setCurrencyType } =
     getCartContext();
   const { user } = getAuthContext();
@@ -20,6 +21,8 @@ const Cart = () => {
   const [showCheckoutModal, setShowCheckoutModal] = useState(false);
 
   const navigate = useNavigate();
+
+  
 
   const handleIncreaseAmount = (item) => {
     dispatch({ type: "INCREASE_QUANTITY", payload: item.id });

@@ -16,12 +16,16 @@
 
 .imageContainer {
   flex: 1;
-  height: 100%;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--spacing-large);
   padding: var(--spacing-large);
+}
+
+.imageContainer h1 {
+  text-align: center;
 }
 
 .imageContainer img {
@@ -182,10 +186,6 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-}
-
-.purchaseAmountContainer {
-  display: flex;
   gap: var(--spacing-medium);
 }
 
@@ -210,7 +210,7 @@
 }
 
 .addToCartButton {
-  padding: 0.2rem;
+  padding: var(--spacing-small) var(--spacing-medium);
   flex: 1;
   height: 42px;
   font-size: var(--font-size-small);
@@ -227,4 +227,55 @@
 
 .addToCartButton:active {
   transform: scale(0.95);
+}
+
+@media screen and (max-width: 922px) {
+  .productStoreContainer {
+    width: 100%;
+  }
+
+  .imageContainer {
+    flex-basis: 100%;
+  }
+
+  .imageContainer img {
+    width: 60%;
+    min-width: 250px;
+  }
+
+  .productsContainer {
+    justify-content: center;
+  }
+
+  .purchaseContainer {
+    gap: var(--spacing-medium);
+  }
+
+  .quantityPriceContainer {
+    text-align: center;
+  }
+
+  .price {
+    justify-content: center;
+  }
+
+  .addToCartContainer {
+    width: 100%;
+    display: flex;
+    flex: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-medium);
+  }
+
+  .purchaseAmountContainer {
+    flex-basis: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .addToCartButton {
+    flex-basis: 100%;
+  }
 }

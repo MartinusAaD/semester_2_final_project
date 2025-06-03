@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { productItems } from "./assets/productData";
 import Navbar from "./Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer";
-import ImportProducts from "./Components/ImportProducts/ImportProducts";
 
 function App() {
   const [itemList, setItemList] = useState(productItems);
@@ -12,13 +11,17 @@ function App() {
 
   // Scroll to top when page is loaded from other routes
   useEffect(() => {
+    const scrollToTop = () => {
+
+      // Keep the page from scrolling up when changing product in the store
+      if (!location.pathname.includes("product-store/")) {
+        // Smooth or not?
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    };
+
     scrollToTop();
   }, [location]);
-
-  const scrollToTop = () => {
-    // Smooth or not?
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   return (
     <>

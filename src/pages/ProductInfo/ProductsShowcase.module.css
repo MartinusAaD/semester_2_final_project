@@ -69,6 +69,7 @@
 
 .itemContainer p {
   padding: var(--spacing-large);
+  text-align: center;
 }
 
 .itemContainer:nth-child(even) {
@@ -98,4 +99,16 @@
 
 .toStoreButton:active {
   transform: scale(0.95);
+}
+
+@media screen and (max-width: 768px) {
+  .subProductsContainer {
+    width: 90%;
+  }
+  .itemContainer {
+    flex-direction: column;
+  }
+  .itemContainer:nth-child(even) {
+    flex-direction: column;
+  }
 }
