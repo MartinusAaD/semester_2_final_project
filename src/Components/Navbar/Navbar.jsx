@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import styles from "./Navbar.module.css";
 import { auth } from "../../firestoreConfig";
 
@@ -13,6 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { onAuthStateChanged } from "firebase/auth";
 import Button from "../Button/Button";
+import { getCartContext } from "../../context/cartContext";
 
 const Navbar = () => {
   const setActiveClass = ({ isActive }) => (isActive ? styles.active : "");
@@ -43,6 +44,14 @@ const Navbar = () => {
       unsubscribe;
     };
   }, []);
+
+  // Cart Quantity
+
+  const { cart } = getCartContext();
+
+  const cartItemsCount = useMemo(() => {
+    return cart.reduce((count, item) => count + item.cartQuantity, 0);
+  }, [cart]);
 
   return (
     <nav className={styles.navbar}>
@@ -111,6 +120,9 @@ const Navbar = () => {
         >
           <NavLink to="/cart" className={styles.linksButton}>
             <FontAwesomeIcon icon={faCartShopping} />
+            {cartItemsCount > 0 && (
+              <p className={styles.cartQuantity}>{cartItemsCount}</p>
+            )}
           </NavLink>
 
           {!isLoggedIn && (
@@ -130,6 +142,9 @@ const Navbar = () => {
         >
           <NavLink to="/cart" className={styles.linksButton}>
             <FontAwesomeIcon icon={faCartShopping} />
+            {cartItemsCount > 0 && (
+              <p className={styles.cartQuantity}>{cartItemsCount}</p>
+            )}
           </NavLink>
 
           <Button

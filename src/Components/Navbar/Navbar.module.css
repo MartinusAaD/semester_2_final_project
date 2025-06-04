@@ -87,6 +87,7 @@
 }
 
 .linksButton {
+  position: relative;
   width: 42px;
   height: 42px;
   box-shadow: var(--box-shadow-small);
@@ -106,6 +107,22 @@
 .linksButton svg {
   color: var(--font-color-light);
   font-size: var(--font-size-medium);
+}
+
+.cartQuantity {
+  position: absolute;
+  bottom: -9px;
+  left: -9px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 25px;
+  height: 25px;
+  background-color: green;
+  font-size: var(--font-size-xs);
+  border-radius: var(--border-radius-small);
 }
 
 .active {
@@ -130,6 +147,8 @@
   position: absolute;
   top: 25px;
   right: 25px;
+
+  transition: right 0.3s ease;
 }
 
 .menuExitButton svg {
