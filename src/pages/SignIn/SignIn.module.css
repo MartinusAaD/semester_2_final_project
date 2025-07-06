@@ -62,19 +62,20 @@
   min-height: 50vh;
   background-color: var(--container-color-black);
   padding: var(--spacing-large) var(--spacing-xl);
-  align-self: center;
-  justify-self: center;
-  border-radius: var(--border-radius-small);
-}
-
-.forgottenPasswordModalFormContainer fieldset {
-  height: 100%;
-  padding: var(--spacing-large);
   border-radius: var(--border-radius-small);
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+}
+
+.forgottenPasswordModalFormContainer fieldset {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   gap: var(--spacing-medium);
+  padding: var(--spacing-large);
+  border-radius: var(--border-radius-small);
 }
 
 .forgottenPasswordModalFormContainer legend {
